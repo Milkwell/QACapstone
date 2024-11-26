@@ -42,6 +42,21 @@ describe('This is', () => {
 
         await DropdownSelector.select7()
         await expect(DropdownSelector.flashAlert7).toBeExisting()
+
+        await DropdownSelector.select8()
+        await expect(DropdownSelector.flashAlert8).toBeExisting()
+        await expect(DropdownSelector.flashAlert8).toHaveText(
+            expect.stringContaining('Women-Owned Brands at Target'))
+
+        await DropdownSelector.select9()
+        await expect(DropdownSelector.flashAlert9).toBeExisting()
+        await expect(DropdownSelector.flashAlert9).toHaveText(
+            expect.stringContaining('Asian-Owned Brands at Target'))
+
+        await DropdownSelector.select10()
+        await expect(DropdownSelector.flashAlert10).toBeExisting()
+        await expect(DropdownSelector.flashAlert10).toHaveText(
+            expect.stringContaining('LGBTQIA+ Shop'))
     })
 })
 /*

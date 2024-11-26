@@ -89,6 +89,42 @@ class DropdownSelector {
     get flashAlert7 () {
         return $('span[data-test="@web/Breadcrumbs/BreadcrumbLink"]');
     }
+
+
+    get btnWomenBrands () {
+        return $('a[data-tracking="Women-Owned Brands at Target"]');
+    }
+    async select8 () {
+        await this.dropDownNF.click();
+        await this.btnWomenBrands.click();
+    }
+    get flashAlert8 () {
+        return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
+    }
+
+
+    get btnAsianBrands () {
+        return $('a[data-tracking="Asian-Owned Brands at Target "]');
+    }
+    async select9 () {
+        await this.dropDownNF.click();
+        await this.btnAsianBrands.click();
+    }
+    get flashAlert9 () {
+        return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
+    }
+
+
+    get btnLGBShop () {
+        return $('a[data-tracking="LGBTQIA+ Shop"]');
+    }
+    async select10 () {
+        await this.dropDownNF.click();
+        await this.btnLGBShop.click();
+    }
+    get flashAlert10 () {
+        return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
+    }
 }
 
 export default new DropdownSelector();
