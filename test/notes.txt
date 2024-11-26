@@ -1,0 +1,35 @@
+    get btnLater () {
+        return $('button[class="sc-ddc722c0-0 sc-3d5333d1-0 jKTcnK hhYRAp"]');
+    } 
+
+    await this.btnLater.click();
+
+this is for when the button may re-appear 
+
+import { $ } from '@wdio/globals'
+import Page from './page.js';
+
+class SecurePage extends Page {
+
+    get flashAlert () {
+        return $('a[aria-label="Target home"]');
+    }
+}
+
+export default new SecurePage();
+
+the origonal page checker
+
+import { Key } from 'webdriverio'
+
+await browser.keys([Key.Enter]);
+
+the function to press the 'return key'
+
+    get favoriteSelect () {
+        return $('button[aria-label="favorite Yoobi Novelty Ballpoint Pen Gingerbread Scarf: 1.0mm Black Ink, Art Stationery, Office Supplies to keep tabs on it"]');
+    }
+
+        await this.favoriteSelect.click();
+
+adding stuff to your favorite list
