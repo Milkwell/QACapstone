@@ -1,10 +1,13 @@
 import { expect } from '@wdio/globals'
+
 import LoginPage from '../pageobjects/login.js'
-import PickupSelector from '../pageobjects/pickupSelector.js'
-import DeliverySelector from '../pageobjects/orderSelector.js'
-import SearchPens from '../pageobjects/searchBar.js'
-import ItemSelector from '../pageobjects/addToCart.js'
-import FavoriteSelector from '../pageobjects/addToFavorites.js'
+
+import DropdownSelector from '../pageobjects/dropdownSelector.js'
+
+//import SearchPens from '../pageobjects/searchBar.js'
+//import ItemSelector from '../pageobjects/addToCart.js'
+
+//mport FavoriteSelector from '../pageobjects/addToFavorites.js'
 
 describe('This is', () => {
     it('step one', async () => {
@@ -17,14 +20,31 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step two', async () => {
-        await PickupSelector.select()
-        await expect(PickupSelector.flashAlert).toBeExisting()
+        await DropdownSelector.select1()
+        await expect(DropdownSelector.flashAlert1).toBeExisting()
 
-        await DeliverySelector.select()
-        await expect(DeliverySelector.flashAlert).toBeExisting()
+        await DropdownSelector.select2()
+        await expect(DropdownSelector.flashAlert2).toBeExisting()
+
+        await DropdownSelector.select3()
+        await expect(DropdownSelector.flashAlert3).toBeExisting()
+        await expect(DropdownSelector.flashAlert3).toHaveText(
+            expect.stringContaining('Target New Arrivals'))
+
+        await DropdownSelector.select4()
+        await expect(DropdownSelector.flashAlert4).toBeExisting()
+
+        await DropdownSelector.select5()
+        await expect(DropdownSelector.flashAlert5).toBeExisting()
+
+        await DropdownSelector.select6()
+        await expect(DropdownSelector.flashAlert6).toBeExisting()
+
+        await DropdownSelector.select7()
+        await expect(DropdownSelector.flashAlert7).toBeExisting()
     })
 })
-
+/*
 describe('This is', () => {
     it('step three', async () => {
         await SearchPens.select('pens')
@@ -47,4 +67,4 @@ describe('This is', () => {
 
         await expect(FavoriteSelector.flashAlert).toBeExisting()
     })
-})
+}) */
