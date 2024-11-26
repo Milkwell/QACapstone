@@ -16,7 +16,6 @@ class DropdownSelector {
         return $('h1[class="sc-fe064f5c-0 eyeVYY h-margin-t-tiny"]');
     }
 
-    
     get btnShopPickup () {
         return $('a[data-tracking="Order Pickup"]');
     }
@@ -27,6 +26,7 @@ class DropdownSelector {
     get flashAlert2 () {
         return $('h1[class="sc-fe064f5c-0 eyeVYY h-display-inline-flex h-margin-t-tight"]');
     }
+
 
 
     get dropDownNF () {
@@ -42,7 +42,6 @@ class DropdownSelector {
     get flashAlert3 () {
         return $('h1[data-test="page-title"]');
     }
-
 
     get btnTargetFinds () {
         return $('a[data-tracking="Target Finds "]');
@@ -66,7 +65,6 @@ class DropdownSelector {
         return $('a[href="/finds/targetstyle"]');
     }
 
-
     get btnBeyondMeasure () {
         return $('a[data-tracking="Black Beyond Measure"]');
     }
@@ -77,7 +75,6 @@ class DropdownSelector {
     get flashAlert6 () {
         return $('div[class="sc-d348f832-1 jVqgIa storycard--text"]');
     }
-
 
     get btnMasQue () {
         return $('a[data-tracking="Más Que"]');
@@ -90,7 +87,6 @@ class DropdownSelector {
         return $('span[data-test="@web/Breadcrumbs/BreadcrumbLink"]');
     }
 
-
     get btnWomenBrands () {
         return $('a[data-tracking="Women-Owned Brands at Target"]');
     }
@@ -101,7 +97,6 @@ class DropdownSelector {
     get flashAlert8 () {
         return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
     }
-
 
     get btnAsianBrands () {
         return $('a[data-tracking="Asian-Owned Brands at Target "]');
@@ -114,7 +109,6 @@ class DropdownSelector {
         return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
     }
 
-
     get btnLGBShop () {
         return $('a[data-tracking="LGBTQIA+ Shop"]');
     }
@@ -123,6 +117,55 @@ class DropdownSelector {
         await this.btnLGBShop.click();
     }
     get flashAlert10 () {
+        return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
+    }
+
+
+
+    get dropDownDeals () {
+        return $('a[aria-label="Deals"]');
+    }
+    get btnTopDeals () {
+        return $('a[data-tracking="top-deals"]');
+    }
+    async select11 () {
+        await this.dropDownDeals.click();
+        await this.btnTopDeals.click();
+    }
+    get flashAlert11 () {
+        return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
+    }
+
+    get btnCircleDeals () {
+        return $('a[data-tracking="target-circle-deals"]');
+    }
+    async select12 () {
+        await this.dropDownDeals.click();
+        await this.btnCircleDeals.click();
+    }
+    get flashAlert12 () {
+        return $('svg[aria-label="Target Circle trademark logo"]');
+    }
+
+    get btnWeekly () {
+        return $('a[data-tracking="weekly-ad"]');
+    }
+    async select13 () {
+        await this.dropDownDeals.click();
+        await this.btnWeekly.click();
+    }
+    get flashAlert13 () {
+        return $('h2[class="styles__StyledHeading-sc-1awz1yh-0 styles__HeaderStyled-sc-3o9rm8-2 dIGeaK cUOOdk"]');
+    }
+
+    get btnClearance () {
+        return $('a[data-tracking="clearance"]');
+    }
+    async select14 () {
+        await this.dropDownDeals.click();
+        await this.btnClearance.click();
+    }
+    get flashAlert14 () {
         return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
     }
 }

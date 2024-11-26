@@ -57,6 +57,22 @@ describe('This is', () => {
         await expect(DropdownSelector.flashAlert10).toBeExisting()
         await expect(DropdownSelector.flashAlert10).toHaveText(
             expect.stringContaining('LGBTQIA+ Shop'))
+    
+        await DropdownSelector.select11()
+        await expect(DropdownSelector.flashAlert11).toBeExisting()
+        await expect(DropdownSelector.flashAlert11).toHaveText(
+            expect.stringContaining('Top Deals'))
+
+        await DropdownSelector.select12()
+        await expect(DropdownSelector.flashAlert12).toBeExisting()
+
+        await DropdownSelector.select13()
+        await expect(DropdownSelector.flashAlert13).toBeExisting()
+
+        await DropdownSelector.select14()
+        await expect(DropdownSelector.flashAlert14).toBeExisting()
+        await expect(DropdownSelector.flashAlert14).toHaveText(
+            expect.stringContaining('Clearance'))
     })
 })
 /*
