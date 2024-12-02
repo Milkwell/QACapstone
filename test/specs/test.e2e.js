@@ -83,13 +83,41 @@ describe('This is', () => {
             expect.stringContaining('for “erasable pens”')
         )
         
-        await ItemSelector.select()
+        await ItemSelector.selectPen()
         await expect(ItemSelector.flashAlert2).toBeExisting()
 
         await ItemSelector.selectQty()
         await expect(ItemSelector.flashAlert3).toBeExisting()
         await expect(ItemSelector.flashAlert3).toHaveText(
             expect.stringContaining('Qty 14')
+        )
+
+        await ItemSelector.selectSaveLater()
+        await expect(ItemSelector.flashAlert4).toBeExisting()
+
+        await ItemSelector.selectSubstitute()
+        await expect(ItemSelector.flashAlert5).toBeExisting()
+        await expect(ItemSelector.flashAlert5).toHaveText(
+            expect.stringContaining('8ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks')
+        )
+
+        await ItemSelector.selectShipping()
+        await expect(ItemSelector.flashAlert7).toBeExisting()
+        await expect(ItemSelector.flashAlert7).toHaveText(
+            expect.stringContaining('Shipping')
+        )
+        await expect(ItemSelector.flashAlert3).toBeExisting()
+        await expect(ItemSelector.flashAlert3).toHaveText(
+            expect.stringContaining('Qty 24')
+        )
+
+        await ItemSelector.selectSaveLater()
+        await expect(ItemSelector.flashAlert4).toBeExisting()
+
+        await ItemSelector.selectBtnX()
+        await expect(ItemSelector.flashAlert8).toBeExisting()
+        await expect(ItemSelector.flashAlert8).toHaveText(
+            expect.stringContaining('Your cart is empty')
         )
     })
 }) 
