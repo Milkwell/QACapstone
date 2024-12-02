@@ -2,10 +2,9 @@ import { expect } from '@wdio/globals'
 
 import LoginPage from '../pageobjects/login.js'
 
-import DropdownSelector from '../pageobjects/dropdownSelector.js'
+//import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
-//import SearchPens from '../pageobjects/searchBar.js'
-//import ItemSelector from '../pageobjects/addToCart.js'
+import ItemSelector from '../pageobjects/addToCart.js'
 
 //mport FavoriteSelector from '../pageobjects/addToFavorites.js'
 
@@ -17,7 +16,7 @@ describe('This is', () => {
         await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
-
+/*
 describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.select1()
@@ -74,26 +73,29 @@ describe('This is', () => {
         await expect(DropdownSelector.flashAlert14).toHaveText(
             expect.stringContaining('Clearance'))
     })
-})
-/*
+}) */
+
 describe('This is', () => {
     it('step three', async () => {
-        await SearchPens.select('pens')
-
-        await expect(SearchPens.flashAlert).toBeExisting()
-    })
-})
-
-describe('This is', () => {
-    it('step four', async () => {
+        await ItemSelector.search('erasable pens')
+        await expect(ItemSelector.flashAlert1).toBeExisting()
+        await expect(ItemSelector.flashAlert1).toHaveText(
+            expect.stringContaining('for “erasable pens”')
+        )
+        
         await ItemSelector.select()
+        await expect(ItemSelector.flashAlert2).toBeExisting()
 
-        await expect(ItemSelector.flashAlert).toBeExisting()
+        await ItemSelector.selectQty()
+        await expect(ItemSelector.flashAlert3).toBeExisting()
+        await expect(ItemSelector.flashAlert3).toHaveText(
+            expect.stringContaining('Qty 14')
+        )
     })
 }) 
-
+/*
 describe('This is', () => {
-    it('step five', async () => {
+    it('step four', async () => {
         await FavoriteSelector.select('gaming headset')
 
         await expect(FavoriteSelector.flashAlert).toBeExisting()
