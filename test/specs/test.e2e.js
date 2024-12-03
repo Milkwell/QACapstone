@@ -1,13 +1,15 @@
 import { expect } from '@wdio/globals'
 
-import LoginPage from '../pageobjects/login.js'
+//import LoginPage from '../pageobjects/login.js'
 
 //import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
+import LinkSelector from '../pageobjects/links.js'
+
 //import ItemSelector from '../pageobjects/addToCart.js'
 
-import FavoriteSelector from '../pageobjects/addToFavorites.js'
-
+//import FavoriteSelector from '../pageobjects/addToFavorites.js'
+/*
 describe('This is', () => {
     it('step one', async () => {
         await LoginPage.open()
@@ -16,7 +18,7 @@ describe('This is', () => {
         await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
-/*
+
 describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.select1()
@@ -73,10 +75,34 @@ describe('This is', () => {
         await expect(DropdownSelector.flashAlert14).toHaveText(
             expect.stringContaining('Clearance'))
     })
-})
+}) */
 
 describe('This is', () => {
     it('step three', async () => {
+        await LinkSelector.selectAboutUs()
+        await expect(LinkSelector.flashAlert).toBeExisting()
+        await expect(LinkSelector.flashAlert).toHaveText(
+            expect.stringContaining('Your gifting inspiration destination'))
+
+        await LinkSelector.selectHelp()
+        await expect(LinkSelector.flashAlert).toBeExisting()
+        await expect(LinkSelector.flashAlert).toHaveText(
+            expect.stringContaining('Your gifting inspiration destination'))
+
+        await LinkSelector.selectStores()
+        await expect(LinkSelector.flashAlert).toBeExisting()
+        await expect(LinkSelector.flashAlert).toHaveText(
+            expect.stringContaining('Your gifting inspiration destination'))
+
+        await LinkSelector.selectServices()
+        await expect(LinkSelector.flashAlert).toBeExisting()
+        await expect(LinkSelector.flashAlert).toHaveText(
+            expect.stringContaining('Your gifting inspiration destination'))
+    })
+})
+/*
+describe('This is', () => {
+    it('step four', async () => {
         await ItemSelector.search('erasable pens')
         await expect(ItemSelector.flashAlert1).toBeExisting()
         await expect(ItemSelector.flashAlert1).toHaveText(
@@ -123,10 +149,10 @@ describe('This is', () => {
             expect.stringContaining('Your cart is empty')
         )
     })
-}) */
+}) 
 
 describe('This is', () => {
-    it('step four', async () => {
+    it('step five', async () => {
         await FavoriteSelector.selectFavorite('gaming headset', 'Hello, the quick brown fox jumped over the lazy dog')
         await expect(FavoriteSelector.flashAlert1).toBeExisting()
 
@@ -136,4 +162,4 @@ describe('This is', () => {
         await FavoriteSelector.selectRemove('gaming headset')
         await expect(FavoriteSelector.flashAlert3).toBeExisting()
     })
-})
+}) */
