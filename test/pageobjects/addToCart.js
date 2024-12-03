@@ -26,7 +26,7 @@ class ItemSelector {
         return $('button[aria-label="pickup - unselected - 1 of 3 - Ready within 2 hours"]');
     }
     get addToCart1 () {
-        return $('button[aria-label="Add to cart for Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack"]');
+        return $('button[data-test="orderPickupButton"]');
     }
     get cartSelect () {
         return $('a[href="/cart"]');
@@ -34,7 +34,7 @@ class ItemSelector {
     async selectPen () {
         await this.penSelect.click();
         //add an if else statment where if pick up is already selected, then it will follow different orders, because it will break other wise
-        await this.pickupSelect.click();
+        //await this.pickupSelect.click();
         await this.addToCart1.click();
         await this.cartSelect.click();
     }

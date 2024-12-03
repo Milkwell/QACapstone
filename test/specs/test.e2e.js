@@ -4,9 +4,9 @@ import LoginPage from '../pageobjects/login.js'
 
 //import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
-import ItemSelector from '../pageobjects/addToCart.js'
+//import ItemSelector from '../pageobjects/addToCart.js'
 
-//mport FavoriteSelector from '../pageobjects/addToFavorites.js'
+import FavoriteSelector from '../pageobjects/addToFavorites.js'
 
 describe('This is', () => {
     it('step one', async () => {
@@ -73,7 +73,7 @@ describe('This is', () => {
         await expect(DropdownSelector.flashAlert14).toHaveText(
             expect.stringContaining('Clearance'))
     })
-}) */
+})
 
 describe('This is', () => {
     it('step three', async () => {
@@ -101,6 +101,9 @@ describe('This is', () => {
             expect.stringContaining('8ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks')
         )
 
+        await ItemSelector.selectSameDayDelivery()
+        await expect(ItemSelector.flashAlert6).toBeExisting()
+
         await ItemSelector.selectShipping()
         await expect(ItemSelector.flashAlert7).toBeExisting()
         await expect(ItemSelector.flashAlert7).toHaveText(
@@ -120,12 +123,12 @@ describe('This is', () => {
             expect.stringContaining('Your cart is empty')
         )
     })
-}) 
-/*
+}) */
+
 describe('This is', () => {
     it('step four', async () => {
         await FavoriteSelector.select('gaming headset')
 
         await expect(FavoriteSelector.flashAlert).toBeExisting()
     })
-}) */
+})
