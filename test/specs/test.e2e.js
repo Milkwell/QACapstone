@@ -127,8 +127,13 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step four', async () => {
-        await FavoriteSelector.select('gaming headset')
+        await FavoriteSelector.selectFavorite('gaming headset', 'Hello, the quick brown fox jumped over the lazy dog')
+        await expect(FavoriteSelector.flashAlert1).toBeExisting()
 
-        await expect(FavoriteSelector.flashAlert).toBeExisting()
+        await FavoriteSelector.selectAddToCart()
+        await expect(FavoriteSelector.flashAlert2).toBeExisting()
+
+        await FavoriteSelector.selectRemove('gaming headset')
+        await expect(FavoriteSelector.flashAlert3).toBeExisting()
     })
 })
