@@ -321,63 +321,54 @@ class LinkSelector {
         return $('div[aria-label="Target Circle™"]');
     }
     get pageTargetCircle () {
-        return $();
+        return $('svg[aria-label="Target Circle 360 TM"]');
     }
 
     get linkTargetCard () {
         return $('div[aria-label="Target Circle™ Card"]');
     }
     get pageTargetCard () {
-        return $();
+        return $('h2[class="sc-fe064f5c-0 WObnm"]');
     }
 
     get linkTarget360 () {
         return $('div[aria-label="Target Circle 360™"]');
     }
-    get pageTarget360 () {
-        return $();
-    }
 
     get linkTargetApp () {
         return $('div[aria-label="Target App"]');
-    }
-    get pageTargetApp () {
-        return $();
     }
 
     get linkRegistry () {
         return $('div[aria-label="Registry"]');
     }
     get pageRegistry () {
-        return $();
+        return $('h1[class="sc-fe064f5c-0 dtCtuk h-margin-l-x2 h-margin-t-x2"]');
     }
 
     get linkDelivery () {
         return $('div[aria-label="Same Day Delivery"]');
     }
     get pageDelivery () {
-        return $();
+        return $('h1[class="sc-fe064f5c-0 ezQRcX h-margin-t-tiny"]');
     }
 
     get linkPickup () {
         return $('div[aria-label="Order Pickup"]');
     }
     get pagePickup () {
-        return $();
+        return $('h1[class="sc-fe064f5c-0 ezQRcX h-display-inline-flex h-margin-t-tight"]');
     }
 
     get linkDriveUp () {
         return $('div[aria-label="Drive Up"]');
     }
     get pageDriveUp () {
-        return $();
+        return $('span[style="line-height:90%;display:block;"]');
     }
 
     get linkShipping () {
         return $('div[aria-label="Free 2-Day Shipping"]');
-    }
-    get pageShipping () {
-        return $();
     }
 
     get linkShipDelivery () {
@@ -390,46 +381,60 @@ class LinkSelector {
     get linkMoreServices () {
         return $('div[aria-label="More Services"]');
     }
-    get pageMoreServices () {
-        return $();
-    }
 
     async selectServices () {
+        await this.linkTargetCircle.click();
+        await expect(this.pageTargetCircle).toExist();
         await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkTargetCard.click();
+        await expect(this.pageTargetCard).toExist();
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkTarget360.click();
+        await expect(this.pageTargetCircle).toExist(); //takes you to the same page, even though it is a different link
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkTargetApp.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Target App'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkRegistry.click();
+        await expect(this.pageRegistry).toExist();
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkDelivery.click();
+        await expect(this.pageDelivery).toExist();
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkPickup.click();
+        await expect(this.pagePickup).toExist();
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkDriveUp.click();
+        await expect(this.pageDriveUp).toExist();
+        await expect(this.pageDriveUp).toHaveText(
+            expect.stringContaining('Fast, easy & always free'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkShipping.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Free 2-Day Shipping'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkShipDelivery.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Pickup & Delivery'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
-
-        await this.link.click();
-        await expect(this.page).toExist();
-
+        await this.linkMoreServices.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Services'));
         await this.homePage.click();
     }
 }

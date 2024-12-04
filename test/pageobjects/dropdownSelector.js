@@ -13,7 +13,7 @@ class DropdownSelector {
         await this.btnShopDelivery.click();
     }
     get flashAlert1 () {
-        return $('h1[class="sc-fe064f5c-0 eyeVYY h-margin-t-tiny"]');
+        return $('h1[class="sc-fe064f5c-0 ezQRcX h-margin-t-tiny"]');
     }
 
     get btnShopPickup () {
@@ -24,7 +24,7 @@ class DropdownSelector {
         await this.btnShopPickup.click();
     }
     get flashAlert2 () {
-        return $('h1[class="sc-fe064f5c-0 eyeVYY h-display-inline-flex h-margin-t-tight"]');
+        return $('h1[class="sc-fe064f5c-0 ezQRcX h-display-inline-flex h-margin-t-tight"]');
     }
 
 
