@@ -1,6 +1,6 @@
 import { expect } from '@wdio/globals'
 
-//import LoginPage from '../pageobjects/login.js'
+import LoginPage from '../pageobjects/login.js'
 
 //import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
@@ -9,7 +9,7 @@ import LinkSelector from '../pageobjects/links.js'
 //import ItemSelector from '../pageobjects/addToCart.js'
 
 //import FavoriteSelector from '../pageobjects/addToFavorites.js'
-/*
+
 describe('This is', () => {
     it('step one', async () => {
         await LoginPage.open()
@@ -18,7 +18,7 @@ describe('This is', () => {
         await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
-
+/*
 describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.select1()
@@ -79,16 +79,17 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step three', async () => {
+        /*
         await LinkSelector.selectAboutUs()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination'))
+            expect.stringContaining('Your gifting inspiration destination'))*/
 
         await LinkSelector.selectHelp()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
             expect.stringContaining('Your gifting inspiration destination'))
-
+/*
         await LinkSelector.selectStores()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
@@ -97,7 +98,7 @@ describe('This is', () => {
         await LinkSelector.selectServices()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination'))
+            expect.stringContaining('Your gifting inspiration destination'))*/
     })
 })
 /*

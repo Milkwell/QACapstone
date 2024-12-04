@@ -9,10 +9,12 @@ class LinkSelector {
     get returnToShop () {
         return $('a[class="global-header--shop cta"]');
     }
-    get pageChecker () {
+    get pageChecker1 () {
         return $('div[class="landing-page-hero--subheading h3"]');
     }
-    // need to add another page checker for the "hero title" selector. Make pageCheker 1 and 2, fix the old labels. Work on the other links a little bit later.
+    get pageChecker2 () {
+        return $('h1[class="hero--title"]');
+    }
 
     get linkAboutTarget () {
         return $('div[aria-label="About Target"]');
@@ -28,9 +30,6 @@ class LinkSelector {
 
     get linkTargetBrands () {
         return $('div[aria-label="Target Brands"]');
-    }
-    get pageTargetBrands () {
-        return $('h1[class="hero--title"]');
     }
 
     get linkBullseyeShop () {
@@ -72,40 +71,39 @@ class LinkSelector {
     get linkSuppliers () {
         return $('div[aria-label="Suppliers"]');
     }
-    get pageSuppliers () {
-        return $('h1[class="hero--title"]');
-    }
-
+/*
     get linkTargetPlus () {
         return $('div[aria-label="TargetPlus"]');
     }
     get pageTargetPlus () {
         return $();
-    }
+    }*/
 
     async selectAboutUs () {
         await this.homePage.click();
 
         await this.linkAboutTarget.click();
-        await expect(this.pageChecker).toExist();
-        await expect(this.pageChecker).toHaveText(
+        await expect(this.pageChecker1).toExist();
+        await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('About'));
         await this.returnToShop.click();
 
         await this.linkCareers.click();
-        await expect(this.pageChecker).toExist();
-        await expect(this.pageChecker).toHaveText(
+        await expect(this.pageChecker1).toExist();
+        await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Careers'));
         await this.returnToShop.click();
 
-        await this.link.click();
-        await expect(this.pageChecker).toExist();
-        await expect(this.pageChecker).toHaveText(
+        await this.linkNewsBlog.click();
+        await expect(this.pageChecker1).toExist();
+        await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('News & Features'));
         await this.returnToShop.click();
 
         await this.linkTargetBrands.click();
-        await expect(this.pageTargetBrands).toExist();
+        await expect(this.pageChecker2).toExist();
+        await expect(this.pageChecker2).toHaveText(
+            expect.stringContaining('Target Brands'));
         await this.returnToShop.click();
 
         await this.linkBullseyeShop.click();
@@ -113,14 +111,14 @@ class LinkSelector {
         await this.closeWindowBullseyeShop.click();
 
         await this.linkSustainGovern.click();
-        await expect(this.pageChecker).toExist();
-        await expect(this.pageChecker).toHaveText(
+        await expect(this.pageChecker1).toExist();
+        await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Sustainability & Governance'));
         await this.returnToShop.click();
 
         await this.linkPressCenter.click();
-        await expect(this.pageChecker).toExist();
-        await expect(this.pageChecker).toHaveText(
+        await expect(this.pageChecker1).toExist();
+        await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Press'));
         await this.returnToShop.click();
 
@@ -128,19 +126,22 @@ class LinkSelector {
         //await expect(this.page).toExist();
 
         await this.linkInvestors.click();
-        await expect(this.pageChecker).toExist();
-        await expect(this.pageChecker).toHaveText(
+        await expect(this.pageChecker1).toExist();
+        await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Investors'));
         await this.returnToShop.click();
 
         //await this.link.click();
         //await expect(this.page).toExist();
 
-        await this.link.click(); //last working point was here !!!
-        await expect(this.page).toExist();
+        await this.linkSuppliers.click();
+        await expect(this.pageChecker2).toExist();
+        await expect(this.pageChecker2).toHaveText(
+            expect.stringContaining('Suppliers'));
+        await this.returnToShop.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        //await this.link.click();
+        //await expect(this.page).toExist();
 
         await this.homePage.click();
     }
@@ -148,134 +149,149 @@ class LinkSelector {
         return $('div[class="storycard--text"]');
     }
 
+    get homeLink () {
+        return $('a[href="https://www.target.com"]');
+    }
+    get pageChecker3 () {
+        return $('h1[class="sc-fe064f5c-0 WObnm"]');
+    }
+    get pageChecker4 () {
+        return $('h1[style="font-size: 28px;"]');
+    }
 
     get linkTargetHelp () {
-        return $('div[]');
+        return $('div[aria-label="Target Help"]');
     }
     get pageTargetHelp () {
-        return $();
+        return $('h2[class="custom-h2"]');
     }
 
     get linkReturns () {
-        return $('div[]');
-    }
-    get pageReturns () {
-        return $();
+        return $('div[aria-label="Returns"]');
     }
 
     get linkTrackOrders () {
-        return $('div[]');
-    }
-    get pageTrackOrders () {
-        return $();
+        return $('div[aria-label="Track Orders"]');
     }
 
     get linkRecalls () {
-        return $('div[]');
-    }
-    get pageRecalls () {
-        return $();
+        return $('div[aria-label="Recalls"]');
     }
 
     get linkContactUs () {
-        return $('div[]');
+        return $('div[aria-label="Contact Us"]');
     }
     get pageContactUs () {
-        return $();
+        return $('button[aria-labelledby="choose topic"]');
     }
 
-    get linkFeedback () {
-        return $('div[]');
+    /*get linkFeedback () {
+        return $('div[aria-label="Feedback"]');
     }
     get pageFeedback () {
-        return $();
+        return $('button[id="submitBtn"]');
     }
+    get closeFeedback () {
+        return $('button[id="btnClose"]');
+    } */
 
     get linkAccessibility () {
-        return $('div[]');
+        return $('div[aria-label="Accessibility"]');
     }
-    get pageAccessibility () {
-        return $();
-    }
-
+/*
     get linkSecurity () {
-        return $('div[]');
+        return $('div[aria-label="Security & Fraud"]');
     }
     get pageSecurity () {
-        return $();
-    }
+        return $('b[class="navbar__title text--truncate"]');
+    } */
 
     get linkTeamServices () {
-        return $('div[]');
+        return $('div[aria-label="Team Member Services"]');
     }
     get pageTeamServices () {
-        return $();
+        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
     }
 
     async selectHelp () {
         await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkTargetHelp.click();
+        await expect(this.pageTargetHelp).toExist();
+        await this.homeLink.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkReturns.click();
+        await expect(this.pageChecker3).toExist();
+        await expect(this.pageChecker3).toHaveText(
+            expect.stringContaining('Target Return Policy'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkTrackOrders.click();
+        await expect(this.pageChecker3).toExist();
+        await expect(this.pageChecker3).toHaveText(
+            expect.stringContaining('Order history'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkRecalls.click();
+        await expect(this.pageChecker4).toExist();
+        await expect(this.pageChecker4).toHaveText(
+            expect.stringContaining('Product recalls'));
+        await this.homeLink.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkContactUs.click();
+        await expect(this.pageContactUs).toExist();
+        await this.homeLink.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        /*await this.linkFeedback.click();
+        await expect(this.pageFeedback).toExist();
+        await this.closeFeedback.click(); */
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkAccessibility.click();
+        await expect(this.pageChecker4).toExist();
+        await expect(this.pageChecker4).toHaveText(
+            expect.stringContaining('Accessibility'));
+        await this.homeLink.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        //await this.link.click();
+        //await expect(this.page).toExist();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkTeamServices.click();
+        await expect(this.pageTeamServices).toExist();
 
         await this.homePage.click();
     }
 
 
     get linkFindStore () {
-        return $('div[]');
+        return $('div[aria-label="Find a Store"]');
     }
     get pageFindStore () {
         return $();
     }
 
     get linkClinic () {
-        return $('div[]');
+        return $('div[aria-label="Clinic"]');
     }
     get pageClinic () {
         return $();
     }
 
     get linkPharmacy () {
-        return $('div[]');
+        return $('div[aria-label="Pharmacy"]');
     }
     get pagePharmacy () {
         return $();
     }
 
     get linkOptical () {
-        return $('div[]');
+        return $('div[aria-label="Optical"]');
     }
     get pageOptical () {
         return $();
     }
 
     get linkStoreServices () {
-        return $('div[]');
+        return $('div[aria-label="More In-Store Services"]');
     }
     get pageStoreServices () {
         return $();
@@ -304,77 +320,77 @@ class LinkSelector {
 
 
     get linkTargetCircle () {
-        return $('div[]');
+        return $('div[aria-label="Target Circle™"]');
     }
     get pageTargetCircle () {
         return $();
     }
 
     get linkTargetCard () {
-        return $('div[]');
+        return $('div[aria-label="Target Circle™ Card"]');
     }
     get pageTargetCard () {
         return $();
     }
 
     get linkTarget360 () {
-        return $('div[]');
+        return $('div[aria-label="Target Circle 360™"]');
     }
     get pageTarget360 () {
         return $();
     }
 
     get linkTargetApp () {
-        return $('div[]');
+        return $('div[aria-label="Target App"]');
     }
     get pageTargetApp () {
         return $();
     }
 
     get linkRegistry () {
-        return $('div[]');
+        return $('div[aria-label="Registry"]');
     }
     get pageRegistry () {
         return $();
     }
 
     get linkDelivery () {
-        return $('div[]');
+        return $('div[aria-label="Same Day Delivery"]');
     }
     get pageDelivery () {
         return $();
     }
 
     get linkPickup () {
-        return $('div[]');
+        return $('div[aria-label="Order Pickup"]');
     }
     get pagePickup () {
         return $();
     }
 
     get linkDriveUp () {
-        return $('div[]');
+        return $('div[aria-label="Drive Up"]');
     }
     get pageDriveUp () {
         return $();
     }
 
     get linkShipping () {
-        return $('div[]');
+        return $('div[aria-label="Free 2-Day Shipping"]');
     }
     get pageShipping () {
         return $();
     }
 
     get linkShipDelivery () {
-        return $('div[]');
+        return $('div[aria-label="Shipping & Delivery"]');
     }
     get pageShipDelivery () {
         return $();
     }
 
     get linkMoreServices () {
-        return $('div[]');
+        return $('div[aria-label="More Services"]');
     }
     get pageMoreServices () {
         return $();
