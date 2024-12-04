@@ -158,6 +158,9 @@ class LinkSelector {
     get pageChecker4 () {
         return $('h1[style="font-size: 28px;"]');
     }
+    get pageChecker5 () {
+        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
+    }
 
     get linkTargetHelp () {
         return $('div[aria-label="Target Help"]');
@@ -209,9 +212,6 @@ class LinkSelector {
     get linkTeamServices () {
         return $('div[aria-label="Team Member Services"]');
     }
-    get pageTeamServices () {
-        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
-    }
 
     async selectHelp () {
         await this.homePage.click();
@@ -256,8 +256,9 @@ class LinkSelector {
         //await expect(this.page).toExist();
 
         await this.linkTeamServices.click();
-        await expect(this.pageTeamServices).toExist();
-
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Team Member Services'));
         await this.homePage.click();
     }
 
@@ -266,55 +267,52 @@ class LinkSelector {
         return $('div[aria-label="Find a Store"]');
     }
     get pageFindStore () {
-        return $();
+        return $('div[class="styles_container__JeY3m"]');
     }
 
     get linkClinic () {
         return $('div[aria-label="Clinic"]');
     }
-    get pageClinic () {
-        return $();
-    }
 
     get linkPharmacy () {
         return $('div[aria-label="Pharmacy"]');
-    }
-    get pagePharmacy () {
-        return $();
     }
 
     get linkOptical () {
         return $('div[aria-label="Optical"]');
     }
-    get pageOptical () {
-        return $();
-    }
 
     get linkStoreServices () {
         return $('div[aria-label="More In-Store Services"]');
     }
-    get pageStoreServices () {
-        return $();
-    }
 
     async selectStores () {
+        await this.linkFindStore.click();
+        await expect(this.pageFindStore).toExist();
         await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkClinic.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Clinic'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkPharmacy.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Pharmacy'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
+        await this.linkOptical.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Target Optical'));
+        await this.homePage.click();
 
-        await this.link.click();
-        await expect(this.page).toExist();
-
-        await this.link.click();
-        await expect(this.page).toExist();
-
+        await this.linkStoreServices.click();
+        await expect(this.pageChecker5).toExist();
+        await expect(this.pageChecker5).toHaveText(
+            expect.stringContaining('Services'));
         await this.homePage.click();
     }
 
