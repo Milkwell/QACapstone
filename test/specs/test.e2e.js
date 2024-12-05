@@ -4,7 +4,9 @@ import LoginPage from '../pageobjects/login.js'
 
 //import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
-import LinkSelector from '../pageobjects/links.js'
+import CategoriesSelector from '../pageobjects/categories.js'
+
+//import LinkSelector from '../pageobjects/links.js'
 
 //import ItemSelector from '../pageobjects/addToCart.js'
 
@@ -18,10 +20,10 @@ describe('This is', () => {
         await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
-/*
+
 describe('This is', () => {
     it('step two', async () => {
-        await DropdownSelector.select1()
+        /*await DropdownSelector.select1()
         await expect(DropdownSelector.flashAlert1).toBeExisting()
 
         await DropdownSelector.select2()
@@ -73,34 +75,39 @@ describe('This is', () => {
         await DropdownSelector.select14()
         await expect(DropdownSelector.flashAlert14).toBeExisting()
         await expect(DropdownSelector.flashAlert14).toHaveText(
-            expect.stringContaining('Clearance'))
-    })
-}) */
+            expect.stringContaining('Clearance'))*/
 
-describe('This is', () => {
+        await CategoriesSelector.selectChristmas()
+        await expect(CategoriesSelector.flashAlert).toBeExisting()
+
+        await CategoriesSelector.selectHanukka()
+        await expect(CategoriesSelector.flashAlert).toBeExisting()
+    })
+})
+// step three needs to add a scroll funhction to load the links, so that I don't have to manually scroll. I also need to finish the tests for the links that take you to a different website.
+/*describe('This is', () => {
     it('step three', async () => {
-        /*
         await LinkSelector.selectAboutUs()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination'))
+            expect.stringContaining('Your gifting inspiration destination')) // about us is not finished
 
         await LinkSelector.selectHelp()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination'))
+            expect.stringContaining('Your gifting inspiration destination')) // help is not finished
 
         await LinkSelector.selectStores()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination'))*/
+            expect.stringContaining('Your gifting inspiration destination'))
 
         await LinkSelector.selectServices()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
             expect.stringContaining('Your gifting inspiration destination'))
     })
-})
+}) */
 /*
 describe('This is', () => {
     it('step four', async () => {
