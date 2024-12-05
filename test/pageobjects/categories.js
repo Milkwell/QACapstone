@@ -216,6 +216,506 @@ class CategoriesSelector {
 
         await this.homePage.click();
     }
+
+
+    get btnGiftIdeas () {
+        return $('a[data-url="/c/gift-ideas/-/N-96d2i"]');
+    }
+    get btnGiftForHer () {
+        return $('a[data-url="/c/gift-ideas-for-women/-/N-22vn7"]');
+    }
+    get btnGiftForHim () {
+        return $('a[data-url="/c/gift-ideas-for-men/-/N-x738m"]');
+    }
+    get btnGiftForKids () {
+        return $('a[data-url="/c/gift-ideas-for-kids/-/N-t13mx"]');
+    }
+    get btnShowMoreGiftsForKids () {
+        return $('div[data-test="@web/CategoryMenu/FeaturedCategories/ToggleButton"]');
+    }
+    get btnToysForKids () {
+        return $('a[data-url="/c/kids-toys-games-craft-gift-ideas/-/N-sgzh8"]');
+    }
+    get btnOutdoorForKids () {
+        return $('a[data-url="/c/kids-outdoor-play-gifts/-/N-ldskx"]');
+    }
+    get btnTechForKids () {
+        return $('a[data-url="/c/kids-video-games-tech-gifts/-/N-rwok7"]');
+    }
+    get btnHomeGiftForKids () {
+        return $('a[data-url="/c/kids-home-gift-ideas/-/N-9vaee"]');
+    }
+    get btnClothingForKids () {
+        return $('a[data-url="/c/kids-clothing-accessory-gifts/-/N-z0zg8"]');
+    }
+    get btnEntertainmentForKids () {
+        return $('a[data-url="/c/kids-entertainment-gift-ideas/-/N-rk1uu"]');
+    }
+    get btnAllGiftIdeasForKids () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get btnGiftForTeens () {
+        return $('a[data-url="/c/gift-ideas-for-teens/-/N-4d3bq"]');
+    }
+    get btnAllGiftIdeas () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    
+    async selectGiftIdeas () {
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForHer.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Her'));
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForHim.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Him'));
+
+        /*await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnToysForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnOutdoorForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnTechForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnHomeGiftForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnShowMoreGiftsForKids.click();
+        await this.btnClothingForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnShowMoreGiftsForKids.click();
+        await this.btnEntertainmentForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnAllGiftIdeasForKids.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Kids'));*/
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForTeens.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Teens'));
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnAllGiftIdeas.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas'));
+
+        await this.homePage.click();
+    }
+
+
+    get btnGiftCards () {
+        return $('a[]');
+    }
+    async selectGiftCards () {
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnHolidayHosting () {
+        return $('a[]');
+    }
+    async selectHolidayHosting () {
+        await this.btnCategories.click();
+        await this.btnHolidayHosting.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnElectronics () {
+        return $('a[]');
+    }
+    async selectElectronics () {
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnVideoGames () {
+        return $('a[]');
+    }
+    async selectVideoGames () {
+        await this.btnCategories.click();
+        await this.btnVideoGames.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnToys () {
+        return $('a[]');
+    }
+    async selectToys () {
+        await this.btnCategories.click();
+        await this.btnToys.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnClothing () {
+        return $('a[]');
+    }
+    async selectClothing () {
+        await this.btnCategories.click();
+        await this.btnClothing.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnGrocery () {
+        return $('a[]');
+    }
+    async selectGrocery () {
+        await this.btnCategories.click();
+        await this.btnGrocery.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnHome () {
+        return $('a[]');
+    }
+    async selectHome () {
+        await this.btnCategories.click();
+        await this.btnHome.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnKitchen () {
+        return $('a[]');
+    }
+    async selectKitchen () {
+        await this.btnCategories.click();
+        await this.btnKitchen.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnFurniture () {
+        return $('a[]');
+    }
+    async selectFurniture () {
+        await this.btnCategories.click();
+        await this.btnFurniture.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnSports () {
+        return $('a[]');
+    }
+    async selectSports () {
+        await this.btnCategories.click();
+        await this.btnSports.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnMovies () {
+        return $('a[]');
+    }
+    async selectMovies () {
+        await this.btnCategories.click();
+        await this.btnMovies.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnBaby () {
+        return $('a[]');
+    }
+    async selectBaby () {
+        await this.btnCategories.click();
+        await this.btnBaby.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnHousholdEssentials () {
+        return $('a[]');
+    }
+    async selectHouseholdEssentials () {
+        await this.btnCategories.click();
+        await this.btnHousholdEssentials.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnBeauty () {
+        return $('a[]');
+    }
+    async selectBeauty () {
+        await this.btnCategories.click();
+        await this.btnBeauty.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnUltaBeauty () {
+        return $('a[]');
+    }
+    async selectUltaBeauty () {
+        await this.btnCategories.click();
+        await this.btnUltaBeauty.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnPeronalCare () {
+        return $('a[]');
+    }
+    async selectPersonalCare () {
+        await this.btnCategories.click();
+        await this.btnPeronalCare.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnHealth () {
+        return $('a[]');
+    }
+    async selectHealth () {
+        await this.btnCategories.click();
+        await this.btnHealth.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnPets () {
+        return $('a[]');
+    }
+    async selectPets () {
+        await this.btnCategories.click();
+        await this.btnPets.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnLuggage () {
+        return $('a[]');
+    }
+    async selectLuggage () {
+        await this.btnCategories.click();
+        await this.btnLuggage.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnSchool () {
+        return $('a[]');
+    }
+    async selectSchool () {
+        await this.btnCategories.click();
+        await this.btnSchool.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnArts () {
+        return $('a[]');
+    }
+    async selectArts () {
+        await this.btnCategories.click();
+        await this.btnArts.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnParty () {
+        return $('a[]');
+    }
+    async selectParty () {
+        await this.btnCategories.click();
+        await this.btnParty.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnOutdoorLiving () {
+        return $('a[]');
+    }
+    async selectOutdoorLiving () {
+        await this.btnCategories.click();
+        await this.btnOutdoorLiving.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnCharacter () {
+        return $('a[]');
+    }
+    async selectCharacter () {
+        await this.btnCategories.click();
+        await this.btnCharacter.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnBullseye () {
+        return $('a[]');
+    }
+    async selectBullseye () {
+        await this.btnCategories.click();
+        await this.btnBullseye.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
+
+
+    get btnClearance () {
+        return $('a[]');
+    }
+    async selectClearance () {
+        await this.btnCategories.click();
+        await this.btnClearance.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.homePage.click();
+    }
 }
 
 export default new CategoriesSelector();
