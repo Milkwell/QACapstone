@@ -20,3 +20,25 @@ class PickupSelector {
 }
 
 export default new PickupSelector();
+
+I need to add my credentials to a git ignore page. I will add 'maxwellhilmo@gmail.com' ,'19778264mH!' as strings to call for in the git ignore file. The feedback link still doesn't work, 
+need to fix, also add a scroll down to get to the links. I also need to test the drop down tabs in the categories section. 
+
+
+
+VVV I still need to create the if else statment for adding an item to the cart.
+get pickupSelect () {
+        return $('button[aria-label="pickup - unselected - 1 of 3 - Ready within 2 hours"]');
+    }
+
+// VVV add an if else statment where if pick up is already selected, then it will follow different orders, because it could break other wise
+        //await this.pickupSelect.click();
+
+VVV Links notes VVV
+        await this.linkTargetCircle.click();
+        await expect(this.pageTargetCircle).toExist();
+        await this.homePage.click();
+
+        await this.linkTarget360.click();
+        await expect(this.pageTargetCircle).toExist(); //takes you to the same page, even though it is a different link
+        await this.homePage.click();

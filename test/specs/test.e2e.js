@@ -90,16 +90,16 @@ describe('This is', () => {
 // step three needs to add a scroll funhction to load the links, so that I don't have to manually scroll. I also need to finish the tests for the links that take you to a different website.
 describe('This is', () => {
     it('step three', async () => {
-        /*await LinkSelector.selectAboutUs()
+        await LinkSelector.selectAboutUs()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination')) // about us is not finished
-*/
+            expect.stringContaining('Your gifting inspiration destination'))
+
         await LinkSelector.selectHelp()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination')) // help is not finished
-/*
+            expect.stringContaining('Your gifting inspiration destination')) // feedback link is not finished
+
         await LinkSelector.selectStores()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
@@ -108,7 +108,7 @@ describe('This is', () => {
         await LinkSelector.selectServices()
         await expect(LinkSelector.flashAlert).toBeExisting()
         await expect(LinkSelector.flashAlert).toHaveText(
-            expect.stringContaining('Your gifting inspiration destination'))*/
+            expect.stringContaining('Your gifting inspiration destination'))
     })
 }) 
 /*
@@ -164,13 +164,13 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step five', async () => {
-        await FavoriteSelector.selectFavorite('gaming headset', 'Hello, the quick brown fox jumped over the lazy dog')
+        await FavoriteSelector.selectFavorite('hello kitty headset', 'Hello, the quick brown fox jumped over the lazy dog')
         await expect(FavoriteSelector.flashAlert1).toBeExisting()
 
         await FavoriteSelector.selectAddToCart()
         await expect(FavoriteSelector.flashAlert2).toBeExisting()
 
-        await FavoriteSelector.selectRemove('gaming headset')
+        await FavoriteSelector.selectRemove('hello kitty headset')
         await expect(FavoriteSelector.flashAlert3).toBeExisting()
     })
 }) */

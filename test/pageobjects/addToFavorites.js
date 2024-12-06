@@ -28,7 +28,7 @@ class FavoriteSelector {
     await browser.keys([Key.Enter]);
     await this.favoriteSelect.click();
     await expect(this.favoriteHeadset).toExist(); 
-    await this.searchBarInput.setValue(staller); //Still loaded too quickly for the website to understand that something was added to your favorit list, so I added this
+    await this.searchBarInput.setValue(staller);
     await this.cartSelect.click();
     await this.favoriteList.click();
     }

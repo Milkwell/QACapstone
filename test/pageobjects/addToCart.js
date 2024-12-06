@@ -22,9 +22,6 @@ class ItemSelector {
     get penSelect () {
         return $('button[aria-label="Add Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack to cart"]');
     }
-    get pickupSelect () {
-        return $('button[aria-label="pickup - unselected - 1 of 3 - Ready within 2 hours"]');
-    }
     get addToCart1 () {
         return $('button[data-test="orderPickupButton"]');
     }
@@ -33,8 +30,6 @@ class ItemSelector {
     }
     async selectPen () {
         await this.penSelect.click();
-        // VVV add an if else statment where if pick up is already selected, then it will follow different orders, because it could break other wise
-        //await this.pickupSelect.click();
         await this.addToCart1.click();
         await this.cartSelect.click();
     }
