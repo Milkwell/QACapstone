@@ -51,34 +51,34 @@ class LinkSelector {
         return $('div[aria-label="Press Center"]');
     }
 
-    /*get linkAdvertise () {
+    get linkAdvertise () {
         return $('div[aria-label="Advertise with Us"]');
     }
     get pageAdvertise () {
-        return $();
-    }*/
+        return $('img[class="custom-logo"]');
+    }
 
     get linkInvestors () {
         return $('div[aria-label="Investors"]');
     }
 
-    /*get linkAffiliatePartner () {
+    get linkAffiliatePartner () {
         return $('div[aria-label="Affiliates & Partners"]');
     }
     get pageAffiliatePartner () {
-        return $();
-    }*/
+        return $('img[alt="Partner Logo"]');
+    }
 
     get linkSuppliers () {
         return $('div[aria-label="Suppliers"]');
     }
-/*
+
     get linkTargetPlus () {
         return $('div[aria-label="TargetPlus"]');
     }
     get pageTargetPlus () {
-        return $();
-    }*/
+        return $('a[aria-label="target plus home"]');
+    }
 
     async selectAboutUs () {
         await this.homePage.click();
@@ -123,8 +123,9 @@ class LinkSelector {
             expect.stringContaining('Press'));
         await this.returnToShop.click();
 
-        //await this.link.click();
-        //await expect(this.page).toExist();
+        await this.linkAdvertise.click();
+        await expect(this.pageAdvertise).toExist();
+        await browser.url(`https://www.target.com/`);
 
         await this.linkInvestors.click();
         await expect(this.pageChecker1).toExist();
@@ -132,8 +133,9 @@ class LinkSelector {
             expect.stringContaining('Investors'));
         await this.returnToShop.click();
 
-        //await this.link.click();
-        //await expect(this.page).toExist();
+        await this.linkAffiliatePartner.click();
+        await expect(this.pageAffiliatePartner).toExist();
+        await browser.url(`https://www.target.com/`);
 
         await this.linkSuppliers.click();
         await expect(this.pageChecker2).toExist();
@@ -141,8 +143,9 @@ class LinkSelector {
             expect.stringContaining('Suppliers'));
         await this.returnToShop.click();
 
-        //await this.link.click();
-        //await expect(this.page).toExist();
+        await this.linkTargetPlus.click();
+        await expect(this.pageTargetPlus).toExist();
+        await browser.url(`https://www.target.com/`);
 
         await this.homePage.click();
     }
@@ -189,26 +192,26 @@ class LinkSelector {
         return $('button[aria-labelledby="choose topic"]');
     }
 
-    /*get linkFeedback () {
+    get linkFeedback () {
         return $('div[aria-label="Feedback"]');
     }
     get pageFeedback () {
-        return $('button[id="submitBtn"]');
+        return $('div[id="kampyleFormModal"]');
     }
     get closeFeedback () {
-        return $('button[id="btnClose"]');
-    } */
+        return $('button[class="btn btn-default"]');
+    } 
 
     get linkAccessibility () {
         return $('div[aria-label="Accessibility"]');
     }
-/*
+
     get linkSecurity () {
         return $('div[aria-label="Security & Fraud"]');
     }
     get pageSecurity () {
         return $('b[class="navbar__title text--truncate"]');
-    } */
+    }
 
     get linkTeamServices () {
         return $('div[aria-label="Team Member Services"]');
@@ -217,7 +220,7 @@ class LinkSelector {
     async selectHelp () {
         await this.homePage.click();
 
-        await this.linkTargetHelp.click();
+        /*await this.linkTargetHelp.click();
         await expect(this.pageTargetHelp).toExist();
         await this.homeLink.click();
 
@@ -227,11 +230,11 @@ class LinkSelector {
             expect.stringContaining('Target Return Policy'));
         await this.homePage.click();
 
-        await this.linkTrackOrders.click();
+        /*await this.linkTrackOrders.click();
         await expect(this.pageChecker3).toExist();
         await expect(this.pageChecker3).toHaveText(
             expect.stringContaining('Order history'));
-        await this.homePage.click();
+        await this.homePage.click();*/
 
         await this.linkRecalls.click();
         await expect(this.pageChecker4).toExist();
@@ -243,9 +246,9 @@ class LinkSelector {
         await expect(this.pageContactUs).toExist();
         await this.homeLink.click();
 
-        /*await this.linkFeedback.click();
+        await this.linkFeedback.click();
         await expect(this.pageFeedback).toExist();
-        await this.closeFeedback.click(); */
+        await this.closeFeedback.click(); 
 
         await this.linkAccessibility.click();
         await expect(this.pageChecker4).toExist();
@@ -253,8 +256,9 @@ class LinkSelector {
             expect.stringContaining('Accessibility'));
         await this.homeLink.click();
 
-        //await this.link.click();
-        //await expect(this.page).toExist();
+        await this.linkSecurity.click();
+        await expect(this.pageSecurity).toExist();
+        await browser.url(`https://www.target.com/`);
 
         await this.linkTeamServices.click();
         await expect(this.pageChecker5).toExist();
