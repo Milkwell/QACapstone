@@ -1,4 +1,5 @@
 import { $ } from '@wdio/globals'
+import {expect} from '@wdio/globals'
 
 class CategoriesSelector {
 
@@ -262,7 +263,7 @@ class CategoriesSelector {
     }
     
     async selectGiftIdeas () {
-        await this.btnCategories.click();
+        /*await this.btnCategories.click();
         await this.btnGiftIdeas.click();
         await this.btnGiftForHer.click();
         await expect(this.pageChecker).toExist();
@@ -276,7 +277,7 @@ class CategoriesSelector {
         await expect(this.pageChecker).toHaveText(
             expect.stringContaining('Gift Ideas for Him'));
 
-        /*await this.btnCategories.click();
+        await this.btnCategories.click();
         await this.btnGiftIdeas.click();
         await this.btnGiftForKids.click();
         await this.btnToysForKids.click();
@@ -298,7 +299,7 @@ class CategoriesSelector {
         await this.btnGiftIdeas.click();
         await this.btnGiftForKids.click();
         await this.btnHomeGiftForKids.click();
-        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toExist();*/
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();
@@ -320,7 +321,7 @@ class CategoriesSelector {
         await this.btnAllGiftIdeasForKids.click();
         await expect(this.pageChecker).toExist();
         await expect(this.pageChecker).toHaveText(
-            expect.stringContaining('Gift Ideas for Kids'));*/
+            expect.stringContaining('Gift Ideas for Kids'));
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();

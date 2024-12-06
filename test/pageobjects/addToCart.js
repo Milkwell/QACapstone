@@ -33,7 +33,7 @@ class ItemSelector {
     }
     async selectPen () {
         await this.penSelect.click();
-        //add an if else statment where if pick up is already selected, then it will follow different orders, because it will break other wise
+        // VVV add an if else statment where if pick up is already selected, then it will follow different orders, because it could break other wise
         //await this.pickupSelect.click();
         await this.addToCart1.click();
         await this.cartSelect.click();
@@ -82,7 +82,7 @@ class ItemSelector {
         return $('input[id="backup-item-78025475"]');
     }
     get btnSave () {
-        return $('button[class="sc-ddc722c0-0 sc-f1230b39-0 jKTcnK doBYzz"]');
+        return $('button[class="sc-ddc722c0-0 sc-f1230b39-0 flfJAZ jtKdbk"]');
     }
     async selectSubstitute () {
         await this.addBack.click();
@@ -92,7 +92,7 @@ class ItemSelector {
         await this.btnSave.click();
     }
     get flashAlert5 () {
-        return $('p[class="sc-de0434cf-2 iQHvhd h-text-overflow-ellipsis"]');
+        return $('p[class="sc-de0434cf-2 gWhKOC h-text-overflow-ellipsis"]');
     }
 
 
@@ -103,7 +103,7 @@ class ItemSelector {
         await this.selectDelivery.click();
     }
     get flashAlert6 () {
-        return $('h2[class="sc-fe064f5c-0 sc-b5d0650b-3 WObnm jWChms"]');
+        return $('h2[data-test="modal-drawer-heading"]');
     }
 
 
@@ -134,7 +134,7 @@ class ItemSelector {
         await this.btnX.click();
     }
     get flashAlert8 () {
-        return $('h1[class="sc-fe064f5c-0 dtCtuk"]');
+        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
     }
 }
 

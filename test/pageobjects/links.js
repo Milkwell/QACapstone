@@ -1,4 +1,5 @@
 import { $ } from '@wdio/globals'
+import {expect} from '@wdio/globals'
 
 class LinkSelector {
 

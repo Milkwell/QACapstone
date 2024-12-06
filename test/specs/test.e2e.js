@@ -4,11 +4,11 @@ import LoginPage from '../pageobjects/login.js'
 
 //import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
-import CategoriesSelector from '../pageobjects/categories.js'
+//import CategoriesSelector from '../pageobjects/categories.js'
 
 //import LinkSelector from '../pageobjects/links.js'
 
-//import ItemSelector from '../pageobjects/addToCart.js'
+import ItemSelector from '../pageobjects/addToCart.js'
 
 //import FavoriteSelector from '../pageobjects/addToFavorites.js'
 
@@ -21,9 +21,9 @@ describe('This is', () => {
     })
 })
 
-describe('This is', () => {
+/*describe('This is', () => {
     it('step two', async () => {
-        /*await DropdownSelector.select1()
+        await DropdownSelector.select1()
         await expect(DropdownSelector.flashAlert1).toBeExisting()
 
         await DropdownSelector.select2()
@@ -81,14 +81,14 @@ describe('This is', () => {
         await expect(CategoriesSelector.flashAlert).toBeExisting()
 
         await CategoriesSelector.selectHanukka()
-        await expect(CategoriesSelector.flashAlert).toBeExisting()*/
+        await expect(CategoriesSelector.flashAlert).toBeExisting()
 
         await CategoriesSelector.selectGiftIdeas()
         await expect(CategoriesSelector.flashAlert).toBeExisting()
     })
 })
 // step three needs to add a scroll funhction to load the links, so that I don't have to manually scroll. I also need to finish the tests for the links that take you to a different website.
-/*describe('This is', () => {
+describe('This is', () => {
     it('step three', async () => {
         await LinkSelector.selectAboutUs()
         await expect(LinkSelector.flashAlert).toBeExisting()
@@ -111,7 +111,7 @@ describe('This is', () => {
             expect.stringContaining('Your gifting inspiration destination'))
     })
 }) */
-/*
+
 describe('This is', () => {
     it('step four', async () => {
         await ItemSelector.search('erasable pens')
@@ -162,7 +162,7 @@ describe('This is', () => {
     })
 }) 
 
-describe('This is', () => {
+/*describe('This is', () => {
     it('step five', async () => {
         await FavoriteSelector.selectFavorite('gaming headset', 'Hello, the quick brown fox jumped over the lazy dog')
         await expect(FavoriteSelector.flashAlert1).toBeExisting()
