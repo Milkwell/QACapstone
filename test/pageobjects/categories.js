@@ -216,7 +216,7 @@ class CategoriesSelector {
             expect.stringContaining('Hanukkah'));
 
         await this.homePage.click();
-    }
+    } // done
 
 
     get btnGiftIdeas () {
@@ -263,7 +263,7 @@ class CategoriesSelector {
     }
     
     async selectGiftIdeas () {
-        /*await this.btnCategories.click();
+        await this.btnCategories.click();
         await this.btnGiftIdeas.click();
         await this.btnGiftForHer.click();
         await expect(this.pageChecker).toExist();
@@ -288,18 +288,21 @@ class CategoriesSelector {
         await this.btnGiftForKids.click();
         await this.btnOutdoorForKids.click();
         await expect(this.pageChecker).toExist();
+        await this.homePage.click();
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();
         await this.btnGiftForKids.click();
         await this.btnTechForKids.click();
         await expect(this.pageChecker).toExist();
+        await this.homePage.click();
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();
         await this.btnGiftForKids.click();
         await this.btnHomeGiftForKids.click();
-        await expect(this.pageChecker).toExist();*/
+        await expect(this.pageChecker).toExist();
+        await this.homePage.click();
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();
@@ -307,6 +310,7 @@ class CategoriesSelector {
         await this.btnShowMoreGiftsForKids.click();
         await this.btnClothingForKids.click();
         await expect(this.pageChecker).toExist();
+        await this.homePage.click();
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();
@@ -314,6 +318,7 @@ class CategoriesSelector {
         await this.btnShowMoreGiftsForKids.click();
         await this.btnEntertainmentForKids.click();
         await expect(this.pageChecker).toExist();
+        await this.homePage.click();
 
         await this.btnCategories.click();
         await this.btnGiftIdeas.click();
@@ -338,35 +343,101 @@ class CategoriesSelector {
             expect.stringContaining('Gift Ideas'));
 
         await this.homePage.click();
-    }
+    } //done
 
 
     get btnGiftCards () {
-        return $('a[]');
+        return $('a[data-url="/c/gift-cards/-/N-5xsxu"]');
+    }
+    get btnCardHolders () {
+        return $('a[data-url="/c/gift-card-holders/-/N-xwmo7"]');
+    }
+    get btnCreditcardGifts () {
+        return $('a[data-url="/c/visa-mastercard-and-american-express-gift-cards/-/N-x7n3r"]');
+    }
+    get btnCorporateCards () {
+        return $('a[data-url="/c/corporate-bulk-gift-cards/-/N-4sro1"]');
+    }
+    get btnAllGiftCards () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get btnTargetGiftCards () {
+        return $('a[data-url="/c/target-giftcards-gift-cards/-/N-5xsxt"]');
+    }
+    get btnSpecialGiftCards () {
+        return $('a[data-url="/c/specialty-gift-cards/-/N-5xsxs"]');
+    }
+    get btnVideoGameCards () {
+        return $('a[data-url="/c/video-game-gift-cards-games/-/N-5xtfh"]');
     }
     async selectGiftCards () {
         await this.btnCategories.click();
         await this.btnGiftCards.click();
+        await this.btnCardHolders.click();
         await expect(this.pageChecker).toExist();
         await expect(this.pageChecker).toHaveText(
-            expect.stringContaining(''));
+            expect.stringContaining('Gift Card Holders'));
+        
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnCreditcardGifts.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Visa, Mastercard, and American Express Gift Cards'));
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnCorporateCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Corporate & Bulk Gift Cards'));
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnAllGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Cards'));
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnTargetGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Target GiftCards'));
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnSpecialGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Specialty Gift Cards'));
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnVideoGameCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Video Game Gift Cards'));
 
         await this.homePage.click();
     }
 
 
     get btnHolidayHosting () {
-        return $('a[]');
+        return $('a[data-url="/c/holiday-hosting-entertainment-holiday-shop/-/N-5xt1f"]');
     }
     async selectHolidayHosting () {
         await this.btnCategories.click();
         await this.btnHolidayHosting.click();
         await expect(this.pageChecker).toExist();
         await expect(this.pageChecker).toHaveText(
-            expect.stringContaining(''));
+            expect.stringContaining('Holiday Hosting & Entertainment'));
 
         await this.homePage.click();
-    }
+    } // done
 
 
     get btnElectronics () {

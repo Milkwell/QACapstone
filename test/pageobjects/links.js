@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import {expect} from '@wdio/globals'
+// still need to add the scroll down function to select the links
 
 class LinkSelector {
 
@@ -83,6 +84,7 @@ class LinkSelector {
     async selectAboutUs () {
         await this.homePage.click();
 
+        //await browser.scroll(0, 200);
         await this.linkAboutTarget.click();
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
@@ -197,9 +199,6 @@ class LinkSelector {
     }
     get pageFeedback () {
         return $('div[id="kampyleFormModal"]');
-    }
-    get closeFeedback () {
-        return $('button[class="btn btn-default"]');
     } 
 
     get linkAccessibility () {
@@ -220,7 +219,7 @@ class LinkSelector {
     async selectHelp () {
         await this.homePage.click();
 
-        /*await this.linkTargetHelp.click();
+        await this.linkTargetHelp.click();
         await expect(this.pageTargetHelp).toExist();
         await this.homeLink.click();
 
@@ -230,11 +229,11 @@ class LinkSelector {
             expect.stringContaining('Target Return Policy'));
         await this.homePage.click();
 
-        /*await this.linkTrackOrders.click();
+        await this.linkTrackOrders.click();
         await expect(this.pageChecker3).toExist();
         await expect(this.pageChecker3).toHaveText(
             expect.stringContaining('Order history'));
-        await this.homePage.click();*/
+        await this.homePage.click();
 
         await this.linkRecalls.click();
         await expect(this.pageChecker4).toExist();
@@ -248,7 +247,7 @@ class LinkSelector {
 
         await this.linkFeedback.click();
         await expect(this.pageFeedback).toExist();
-        await this.closeFeedback.click(); 
+        await browser.url(`https://www.target.com/`); 
 
         await this.linkAccessibility.click();
         await expect(this.pageChecker4).toExist();
@@ -397,7 +396,7 @@ class LinkSelector {
         await this.homePage.click();
 
         await this.linkTarget360.click();
-        await expect(this.pageTargetCircle).toExist(); //takes you to the same page, even though it is a different link
+        await expect(this.pageTargetCircle).toExist();
         await this.homePage.click();
 
         await this.linkTargetApp.click();
