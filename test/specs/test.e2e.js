@@ -2,9 +2,9 @@ import { expect } from '@wdio/globals'
 
 import LoginPage from '../pageobjects/login.js'
 
-//import DropdownSelector from '../pageobjects/dropdownSelector.js'
+import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
-import CategoriesSelector from '../pageobjects/categories.js'
+//import CategoriesSelector from '../pageobjects/categories.js'
 
 //import LinkSelector from '../pageobjects/links.js'
 
@@ -23,62 +23,17 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step two', async () => {
-        /*await DropdownSelector.select1()
-        await expect(DropdownSelector.flashAlert1).toBeExisting()
+        /*await DropdownSelector.selectPickupDelivery()
+        await expect(DropdownSelector.flashAlert).toBeExisting()
 
-        await DropdownSelector.select2()
-        await expect(DropdownSelector.flashAlert2).toBeExisting()
+        await DropdownSelector.selectNewFeatured()
+        await expect(DropdownSelector.flashAlert).toBeExisting()*/
 
-        await DropdownSelector.select3()
-        await expect(DropdownSelector.flashAlert3).toBeExisting()
-        await expect(DropdownSelector.flashAlert3).toHaveText(
-            expect.stringContaining('Target New Arrivals'))
+        await DropdownSelector.selectDeals()
+        await expect(DropdownSelector.flashAlert).toBeExisting()
 
-        await DropdownSelector.select4()
-        await expect(DropdownSelector.flashAlert4).toBeExisting()
-
-        await DropdownSelector.select5()
-        await expect(DropdownSelector.flashAlert5).toBeExisting()
-
-        await DropdownSelector.select6()
-        await expect(DropdownSelector.flashAlert6).toBeExisting()
-
-        await DropdownSelector.select7()
-        await expect(DropdownSelector.flashAlert7).toBeExisting()
-
-        await DropdownSelector.select8()
-        await expect(DropdownSelector.flashAlert8).toBeExisting()
-        await expect(DropdownSelector.flashAlert8).toHaveText(
-            expect.stringContaining('Women-Owned Brands at Target'))
-
-        await DropdownSelector.select9()
-        await expect(DropdownSelector.flashAlert9).toBeExisting()
-        await expect(DropdownSelector.flashAlert9).toHaveText(
-            expect.stringContaining('Asian-Owned Brands at Target'))
-
-        await DropdownSelector.select10()
-        await expect(DropdownSelector.flashAlert10).toBeExisting()
-        await expect(DropdownSelector.flashAlert10).toHaveText(
-            expect.stringContaining('LGBTQIA+ Shop'))
-    
-        await DropdownSelector.select11()
-        await expect(DropdownSelector.flashAlert11).toBeExisting()
-        await expect(DropdownSelector.flashAlert11).toHaveText(
-            expect.stringContaining('Top Deals'))
-
-        await DropdownSelector.select12()
-        await expect(DropdownSelector.flashAlert12).toBeExisting()
-
-        await DropdownSelector.select13()
-        await expect(DropdownSelector.flashAlert13).toBeExisting()
-
-        await DropdownSelector.select14()
-        await expect(DropdownSelector.flashAlert14).toBeExisting()
-        await expect(DropdownSelector.flashAlert14).toHaveText(
-            expect.stringContaining('Clearance'))*/
-
-        await CategoriesSelector.selectCategories()
-        await expect(CategoriesSelector.flashAlert).toBeExisting()
+        /*await CategoriesSelector.selectCategories()
+        await expect(CategoriesSelector.flashAlert).toBeExisting()*/
     })
 })
 // step three needs to add a scroll funhction to load the links, so that I don't have to manually scroll. I also need to finish the tests for the links that take you to a different website.
