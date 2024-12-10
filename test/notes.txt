@@ -21,9 +21,25 @@ class PickupSelector {
 
 export default new PickupSelector();
 
-I need to add my credentials to a git ignore page. I will add 'maxwellhilmo@gmail.com' ,'19778264mH!' as strings to call for in the git ignore file. The feedback link still doesn't work, 
-need to fix, also add a scroll down to get to the links. I also need to test the drop down tabs in the categories section. 
+I need to add my credentials to a git ignore page. I will add 'maxwellhilmo@gmail.com' ,'19778264mH!' as strings to call for in the git ignore file.
 
+
+VV how I might be able to scroll down VVV
+
+describe('Scroll to the bottom of a webpage', () => {
+    it('should scroll to the bottom of the page', async () => {
+        // Open the website
+        await browser.url('https://example.com');
+
+        // Execute a JavaScript snippet to scroll to the bottom
+        await browser.execute(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+
+        // Optionally, you can add an assertion or wait to verify the result
+        await browser.pause(2000); // Wait for 2 seconds to observe the scroll
+    });
+});
 
 
 VVV I still need to create the if else statment for adding an item to the cart.
@@ -42,3 +58,699 @@ VVV Links notes VVV
         await this.linkTarget360.click();
         await expect(this.pageTargetCircle).toExist(); //takes you to the same page, even though it is a different link
         await this.homePage.click();
+
+VVV FavoriteSelector notes VVV
+    async selectFavorite (item, staller) {
+    await this.homePage.click();
+    await this.searchBarInput.setValue(item);
+    await browser.keys([Key.Enter]);
+    await this.favoriteSelect.click();
+    await expect(this.favoriteHeadset).toExist(); 
+    await this.searchBarInput.setValue(staller); //Still loaded too quickly for the website to understand that something was added to your favorit list, so I added this
+    await this.cartSelect.click();
+    await this.favoriteList.click();
+    }
+
+VVV Old Categories selector VVV 
+import { $ } from '@wdio/globals'
+import {expect} from '@wdio/globals'
+
+class CategoriesSelector {
+
+    get pageChecker () {
+        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
+    }
+    get flashAlert () {
+        return $('div[class="storycard--text"]');
+    }
+    get homePage () {
+        return $('a[aria-label="Target home"]');
+    }
+    
+    get btnCategories () {
+        return $('a[aria-label="Categories"]');
+    }
+    get btnChristmas () {
+        return $('a[data-url="/c/christmas/-/N-5xt30"]');
+    }
+    get chrisDeals () {
+        return $('a[data-url="/c/christmas-deals/-/N-4rr05"]');
+    }
+    get chrisToys () {
+        return $('a[data-url="/c/christmas-toys-games/-/N-appnx"]');
+    }
+    get allChris () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get allChrisChecker () {
+        return $('h2[class="sc-fe064f5c-0 sc-710d0ece-5 fJliSz jvuvQS"]');
+    }
+    get chrisDecor () {
+        return $('a[data-url="/c/christmas-decorations/-/N-bshla"]');
+    }
+    get chrisOrnamnets () {
+        return $('a[data-url="/c/christmas-ornaments-tree-decorations/-/N-5xt2u"]');
+    }
+    get chrisTrees () {
+        return $('a[data-url="/c/christmas-trees/-/N-5xt2z"]');
+    }
+    get chrisLights () {
+        return $('a[data-url="/c/christmas-lights/-/N-5xt2w"]');
+    }
+    get chrisStockings () {
+        return $('a[data-url="/c/christmas-stockings-holders/-/N-5xt2q"]');
+    }
+    get chrisOutfits () {
+        return $('a[data-url="/c/christmas-clothing-and-accessories/-/N-cfwzy"]');
+    }
+    get adventCalenders () {
+        return $('a[data-url="/c/advent-calendars-indoor-christmas-decorations/-/N-2wx5d"]');
+    }
+    get chrisCrafts () {
+        return $('a[data-url="/c/christmas-crafts/-/N-53hs2"]');
+    }
+    get chrisDining () {
+        return $('a[data-url="/c/christmas-dining-entertaining/-/N-56i2u"]');
+    }
+    get chrisParty () {
+        return $('a[data-url="/c/christmas-party-supplies/-/N-5xt2s"]');
+    }
+    get chrisCandy () {
+        return $('a[data-url="/c/christmas-candy-treats-holiday-shop/-/N-iywcd"]');
+    }
+    get stockingStuffers () {
+        return $('a[data-url="/c/stocking-stuffers/-/N-av00p"]');
+    }
+    get allCandy () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get chrisSuppies () {
+        return $('a[data-url="/c/christmas-wrapping-paper-supplies/-/N-4y5jk"]');
+    }
+    get chrisCards () {
+        return $('a[data-url="/c/christmas-cards-stationery-invitations/-/N-5xt2r"]');
+    }
+
+    async selectChristmas () {
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisDeals.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Deals'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisToys.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Toys & Games'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.allChris.click();
+        await expect(this.allChrisChecker).toExist();
+        await expect(this.allChrisChecker).toHaveText(
+            expect.stringContaining('Shop by category'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisDecor.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Decorations'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisOrnamnets.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Ornaments'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisTrees.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Trees'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisLights.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Lights'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisStockings.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Stockings & Holders'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisOutfits.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Outfits'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.adventCalenders.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Advent Calendars'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisCrafts.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Crafts'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisDining.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Dining & Entertaining'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisParty.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Party Supplies'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisCandy.click();
+        await this.stockingStuffers.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Stocking Stuffers'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisCandy.click();
+        await this.allCandy.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Candy & Treats'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisSuppies.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Wrapping Paper & Supplies'));
+
+        await this.btnCategories.click();
+        await this.btnChristmas.click();
+        await this.chrisCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Christmas Cards, Stationery & Invitations'));
+
+        await this.homePage.click();
+    }
+
+
+    get btnHanukka () {
+        return $('a[data-url="/c/hanukkah/-/N-5xt1l"]');
+    }
+    async selectHanukka () {
+        await this.btnCategories.click();
+        await this.btnHanukka.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Hanukkah'));
+
+        await this.homePage.click();
+    } // done
+
+
+    get btnGiftIdeas () {
+        return $('a[data-url="/c/gift-ideas/-/N-96d2i"]');
+    }
+    get btnGiftForHer () {
+        return $('a[data-url="/c/gift-ideas-for-women/-/N-22vn7"]');
+    }
+    get btnGiftForHim () {
+        return $('a[data-url="/c/gift-ideas-for-men/-/N-x738m"]');
+    }
+    get btnGiftForKids () {
+        return $('a[data-url="/c/gift-ideas-for-kids/-/N-t13mx"]');
+    }
+    get btnShowMoreGiftsForKids () {
+        return $('div[data-test="@web/CategoryMenu/FeaturedCategories/ToggleButton"]');
+    }
+    get btnToysForKids () {
+        return $('a[data-url="/c/kids-toys-games-craft-gift-ideas/-/N-sgzh8"]');
+    }
+    get btnOutdoorForKids () {
+        return $('a[data-url="/c/kids-outdoor-play-gifts/-/N-ldskx"]');
+    }
+    get btnTechForKids () {
+        return $('a[data-url="/c/kids-video-games-tech-gifts/-/N-rwok7"]');
+    }
+    get btnHomeGiftForKids () {
+        return $('a[data-url="/c/kids-home-gift-ideas/-/N-9vaee"]');
+    }
+    get btnClothingForKids () {
+        return $('a[data-url="/c/kids-clothing-accessory-gifts/-/N-z0zg8"]');
+    }
+    get btnEntertainmentForKids () {
+        return $('a[data-url="/c/kids-entertainment-gift-ideas/-/N-rk1uu"]');
+    }
+    get btnAllGiftIdeasForKids () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get btnGiftForTeens () {
+        return $('a[data-url="/c/gift-ideas-for-teens/-/N-4d3bq"]');
+    }
+    get btnAllGiftIdeas () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    
+    async selectGiftIdeas () {
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForHer.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Her'));
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForHim.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Him'));
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnToysForKids.click();
+        await expect(this.pageChecker).toExist();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnOutdoorForKids.click();
+        await expect(this.pageChecker).toExist();
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnTechForKids.click();
+        await expect(this.pageChecker).toExist();
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnHomeGiftForKids.click();
+        await expect(this.pageChecker).toExist();
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnShowMoreGiftsForKids.click();
+        await this.btnClothingForKids.click();
+        await expect(this.pageChecker).toExist();
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnShowMoreGiftsForKids.click();
+        await this.btnEntertainmentForKids.click();
+        await expect(this.pageChecker).toExist();
+        await this.homePage.click();
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForKids.click();
+        await this.btnAllGiftIdeasForKids.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Kids'));
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnGiftForTeens.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas for Teens'));
+
+        await this.btnCategories.click();
+        await this.btnGiftIdeas.click();
+        await this.btnAllGiftIdeas.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Ideas'));
+
+        await this.homePage.click();
+    } //done
+
+
+    get btnGiftCards () {
+        return $('a[data-url="/c/gift-cards/-/N-5xsxu"]');
+    }
+    get btnCardHolders () {
+        return $('a[data-url="/c/gift-card-holders/-/N-xwmo7"]');
+    }
+    get btnCreditcardGifts () {
+        return $('a[data-url="/c/visa-mastercard-and-american-express-gift-cards/-/N-x7n3r"]');
+    }
+    get btnCorporateCards () {
+        return $('a[data-url="/c/corporate-bulk-gift-cards/-/N-4sro1"]');
+    }
+    get btnAllGiftCards () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get btnTargetGiftCards () {
+        return $('a[data-url="/c/target-giftcards-gift-cards/-/N-5xsxt"]');
+    }
+    get btnSpecialGiftCards () {
+        return $('a[data-url="/c/specialty-gift-cards/-/N-5xsxs"]');
+    }
+    get btnVideoGameCards () {
+        return $('a[data-url="/c/video-game-gift-cards-games/-/N-5xtfh"]');
+    }
+    async selectGiftCards () {
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnCardHolders.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Card Holders'));
+        
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnCreditcardGifts.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Visa, Mastercard, and American Express Gift Cards'));
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnCorporateCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Corporate & Bulk Gift Cards'));
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnAllGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Gift Cards'));
+        await this.homePage.click(); //to slow down the loading
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnTargetGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Target GiftCards'));
+        await this.homePage.click(); //to slow down the loading
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnSpecialGiftCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Specialty Gift Cards'));
+
+        await this.btnCategories.click();
+        await this.btnGiftCards.click();
+        await this.btnVideoGameCards.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Video Game Gift Cards'));
+
+        await this.homePage.click();
+    } //done
+
+
+    get btnHolidayHosting () {
+        return $('a[data-url="/c/holiday-hosting-entertainment-holiday-shop/-/N-5xt1f"]');
+    }
+    async selectHolidayHosting () {
+        await this.btnCategories.click();
+        await this.btnHolidayHosting.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Holiday Hosting & Entertainment'));
+
+        await this.homePage.click();
+    } // done
+
+
+    get btnElectronics () {
+        return $('a[data-url="/c/electronics/-/N-5xtg6"]');
+    }
+    get btnSmarthHealthTech () {
+        return $('a[data-url="/c/smart-health-technology/-/N-nuo8q"]');
+    }
+    get btnWifiNetworking () {
+        return $('a[data-url="/c/wi-fi-networking-electronics/-/N-5s7dv"]');
+    }
+    //stuff in Wifi networking
+    get btnElcVideoGames () {
+        return $('a[data-url="/c/video-games/-/N-5xtg5"]');
+    }
+    //stuff in videogames
+    get btnBatteries () {
+        return $('a[data-url="/c/batteries-household-essentials/-/N-5xsyz"]');
+    }
+    get btnCellPhones () {
+        return $('a[data-url="/c/cell-phones-electronics/-/N-5xte8"]');
+    }
+    //stuff in cell phones
+    get btnTabletsEReaders () {
+        return $('a[data-url="/c/tablets-e-readers-electronics/-/N-5xtf0"]');
+    }
+    //stuff in tablets
+    get btnSpeakersAudioSystems () {
+        return $('a[data-url="/c/speakers-audio-systems-electronics/-/N-5xte2"]');
+    }
+    //stuff in speakers
+    get btnKidsElectronics () {
+        return $('a[data-url="/c/kids-electronics/-/N-5xt9q"]');
+    }
+    //stuff in kids electronics
+    get btnCameras () {
+        return $('a[data-url="/c/cameras-camcorders-electronics/-/N-5xtez"]');
+    }
+    //stuff in cameras
+    get btnTechAccessories () {
+        return $('a[data-url="/c/tech-accessories-electronics/-/N-4vpab"]');
+    }
+    get btnHeadphones () {
+        return $('a[data-url="/c/headphones-electronics/-/N-5xteg"]');
+    }
+    //stuff in headphones
+    get btnSmartHome () {
+        return $('a[data-url="/c/smart-home-electronics/-/N-556xa"]');
+    }
+    //stuff in smart home
+    get btnComputersOffice () {
+        return $('a[data-url="/c/computers-office-electronics/-/N-5xtfc"]');
+    }
+    // stuff in computers office
+    get btnTvHomeTheater () {
+        return $('a[data-url="/c/tvs-home-theater-electronics/-/N-5xtdw"]');
+    }
+    //stuff in home theater
+    get btnAllElectronics () {
+        return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
+    }
+    get btnElcMoreCategories () {
+        return $('button[class="sc-e851bd29-0 sc-a5488128-2 iOFmiD jHklZT"]');
+    }
+    get btnTechServicesSupport () {
+        return $('a[data-url="/c/tech-services-support/-/N-hsdui"]');
+    }
+    get btnPartyTech () {
+        return $('a[data-url="/c/party-tech/-/N-p2tb9"]');
+    }
+    get btnTechGiftHQ () {
+        return $('a[data-url="/c/tech-gift-hq/-/N-ozsma"]');
+    }
+    get btnContentCreatorTech () {
+        return $('a[data-url="/c/content-creator-tech/-/N-cxvuf"]');
+    }
+    //stuff in creator tech
+    get btnElcApple () {
+        return $('a[data-url="/b/apple/-/N-5y3ej"]');
+    }
+    get btnElectronicsDeals () {
+        return $('a[data-url="/c/electronics-deals/-/N-556x9"]');
+    }
+    async selectElectronics () {
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnSmarthHealthTech.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Smart Health Technology'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnWifiNetworking.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+        
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnElcVideoGames.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnBatteries.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Batteries'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnCellPhones.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnAllElectronics.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnTabletsEReaders.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnSpeakersAudioSystems.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnKidsElectronics.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnCameras.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnTechAccessories.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Tech Accessories'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnHeadphones.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnSmartHome.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnComputersOffice.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnTvHomeTheater.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnAllElectronics.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Electronics'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnElcMoreCategories.click();
+        await this.btnTechServicesSupport.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Electronics'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnElcMoreCategories
+        await this.btnPartyTech.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Party Tech'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnTechGiftHQ.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Tech Gift HQ'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnContentCreatorTech.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining(''));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnElcApple.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Apple'));
+
+        await this.btnCategories.click();
+        await this.btnElectronics.click();
+        await this.btnElectronicsDeals.click();
+        await expect(this.pageChecker).toExist();
+        await expect(this.pageChecker).toHaveText(
+            expect.stringContaining('Electronics Deals'));
+
+        await this.homePage.click();
+    }

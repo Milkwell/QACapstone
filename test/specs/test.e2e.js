@@ -2,11 +2,11 @@ import { expect } from '@wdio/globals'
 
 import LoginPage from '../pageobjects/login.js'
 
-import DropdownSelector from '../pageobjects/dropdownSelector.js'
+//import DropdownSelector from '../pageobjects/dropdownSelector.js'
 
 //import CategoriesSelector from '../pageobjects/categories.js'
 
-//import LinkSelector from '../pageobjects/links.js'
+import LinkSelector from '../pageobjects/links.js'
 
 //import ItemSelector from '../pageobjects/addToCart.js'
 
@@ -21,23 +21,23 @@ describe('This is', () => {
     })
 })
 
-describe('This is', () => {
+/*describe('This is', () => {
     it('step two', async () => {
-        /*await DropdownSelector.selectPickupDelivery()
+        await DropdownSelector.selectPickupDelivery()
         await expect(DropdownSelector.flashAlert).toBeExisting()
 
         await DropdownSelector.selectNewFeatured()
-        await expect(DropdownSelector.flashAlert).toBeExisting()*/
+        await expect(DropdownSelector.flashAlert).toBeExisting()
 
         await DropdownSelector.selectDeals()
         await expect(DropdownSelector.flashAlert).toBeExisting()
 
-        /*await CategoriesSelector.selectCategories()
-        await expect(CategoriesSelector.flashAlert).toBeExisting()*/
+        await CategoriesSelector.selectCategories()
+        await expect(CategoriesSelector.flashAlert).toBeExisting()
     })
-})
+})*/
 // step three needs to add a scroll funhction to load the links, so that I don't have to manually scroll. I also need to finish the tests for the links that take you to a different website.
-/*describe('This is', () => {
+describe('This is', () => {
     it('step three', async () => {
         await LinkSelector.selectAboutUs()
         await expect(LinkSelector.flashAlert).toBeExisting()
@@ -59,7 +59,7 @@ describe('This is', () => {
         await expect(LinkSelector.flashAlert).toHaveText(
             expect.stringContaining('Save on, saver'))
     })
-}) */
+}) 
 /*
 describe('This is', () => {
     it('step four', async () => {
