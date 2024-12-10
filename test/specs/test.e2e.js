@@ -75,18 +75,9 @@ describe('This is', () => {
         await DropdownSelector.select14()
         await expect(DropdownSelector.flashAlert14).toBeExisting()
         await expect(DropdownSelector.flashAlert14).toHaveText(
-            expect.stringContaining('Clearance'))
+            expect.stringContaining('Clearance'))*/
 
-        await CategoriesSelector.selectChristmas()
-        await expect(CategoriesSelector.flashAlert).toBeExisting()
-
-        await CategoriesSelector.selectHanukka()
-        await expect(CategoriesSelector.flashAlert).toBeExisting()
-
-        await CategoriesSelector.selectGiftIdeas()
-        await expect(CategoriesSelector.flashAlert).toBeExisting()*/
-
-        await CategoriesSelector.selectGiftCards()
+        await CategoriesSelector.selectCategories()
         await expect(CategoriesSelector.flashAlert).toBeExisting()
     })
 })
