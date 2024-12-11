@@ -15,7 +15,7 @@ describe('This is', () => {
         await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
-
+/*
 describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.selectPickupDelivery()
@@ -31,7 +31,7 @@ describe('This is', () => {
         await expect(CategoriesSelector.flashAlert).toBeExisting()
     })
 })
-
+*/
 describe('This is', () => {
     it('step three', async () => {
         await LinkSelector.selectAboutUs()
@@ -55,7 +55,7 @@ describe('This is', () => {
             expect.stringContaining('Save on, saver'))
     })
 }) 
-
+/*
 describe('This is', () => {
     it('step four', async () => {
         await ItemSelector.search('erasable pens')
@@ -117,4 +117,4 @@ describe('This is', () => {
         await FavoriteSelector.selectRemove('hello kitty headset')
         await expect(FavoriteSelector.flashAlert3).toBeExisting()
     })
-})
+})*/

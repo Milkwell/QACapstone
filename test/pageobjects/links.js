@@ -1,21 +1,20 @@
 import { $ } from '@wdio/globals'
 import {expect} from '@wdio/globals'
 import { browser } from '@wdio/globals'
-// still need to add the scroll down function to select the links
 
 class LinkSelector {
 
     get homePage () {
         return $('a[aria-label="Target home"]');
     }
-    get returnToShop () {
-        return $('a[class="global-header--shop cta"]');
-    }
     get pageChecker1 () {
         return $('div[class="landing-page-hero--subheading h3"]');
     }
     get pageChecker2 () {
         return $('h1[class="hero--title"]');
+    }
+    get flashAlert () {
+        return $('div[class="storycard--text"]');
     }
 
 
@@ -81,7 +80,7 @@ class LinkSelector {
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('About'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -90,7 +89,7 @@ class LinkSelector {
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Careers'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -99,7 +98,7 @@ class LinkSelector {
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('News & Features'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -108,7 +107,7 @@ class LinkSelector {
         await expect(this.pageChecker2).toExist();
         await expect(this.pageChecker2).toHaveText(
             expect.stringContaining('Target Brands'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -117,14 +116,11 @@ class LinkSelector {
         await expect(this.windowBullseyeShop).toExist();
         await this.closeWindowBullseyeShop.click();
 
-        await browser.execute(() => {
-            window.scrollTo(0, document.body.scrollHeight);
-        });
         await this.linkSustainGovern.click();
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Sustainability & Governance'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -133,7 +129,7 @@ class LinkSelector {
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Press'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -149,7 +145,7 @@ class LinkSelector {
         await expect(this.pageChecker1).toExist();
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Investors'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -165,7 +161,7 @@ class LinkSelector {
         await expect(this.pageChecker2).toExist();
         await expect(this.pageChecker2).toHaveText(
             expect.stringContaining('Suppliers'));
-        await this.returnToShop.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -175,9 +171,6 @@ class LinkSelector {
         await browser.url(`https://www.target.com/`);
 
         await this.homePage.click();
-    }
-    get flashAlert () {
-        return $('div[class="storycard--text"]');
     }
 
     get homeLink () {
@@ -234,14 +227,12 @@ class LinkSelector {
     }
 
     async selectHelp () {
-        await this.homePage.click();
-
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkTargetHelp.click();
         await expect(this.pageTargetHelp).toExist();
-        await this.homeLink.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -250,7 +241,7 @@ class LinkSelector {
         await expect(this.pageChecker3).toExist();
         await expect(this.pageChecker3).toHaveText(
             expect.stringContaining('Target Return Policy'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -259,7 +250,7 @@ class LinkSelector {
         await expect(this.pageChecker3).toExist();
         await expect(this.pageChecker3).toHaveText(
             expect.stringContaining('Order history'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -268,14 +259,14 @@ class LinkSelector {
         await expect(this.pageChecker4).toExist();
         await expect(this.pageChecker4).toHaveText(
             expect.stringContaining('Product recalls'));
-        await this.homeLink.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkContactUs.click();
         await expect(this.pageContactUs).toExist();
-        await this.homeLink.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -291,7 +282,7 @@ class LinkSelector {
         await expect(this.pageChecker4).toExist();
         await expect(this.pageChecker4).toHaveText(
             expect.stringContaining('Accessibility'));
-        await this.homeLink.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -398,7 +389,7 @@ class LinkSelector {
         return $('div[aria-label="Registry"]');
     }
     get pageRegistry () {
-        return $('h1[class="sc-fe064f5c-0 dtCtuk h-margin-l-x2 h-margin-t-x2"]');
+        return $('h1[data-test="@site-registry/HomeBanner/heading"]');
     }
     get linkDelivery () {
         return $('div[aria-label="Same Day Delivery"]');
