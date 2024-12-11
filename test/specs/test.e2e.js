@@ -1,27 +1,22 @@
 import { expect } from '@wdio/globals'
-
 import LoginPage from '../pageobjects/login.js'
-
-//import DropdownSelector from '../pageobjects/dropdownSelector.js'
-
-//import CategoriesSelector from '../pageobjects/categories.js'
-
+import LoginInfo from '../pageobjects/loginCredentials.js'
+import DropdownSelector from '../pageobjects/dropdownSelector.js'
+import CategoriesSelector from '../pageobjects/categories.js'
 import LinkSelector from '../pageobjects/links.js'
-
-//import ItemSelector from '../pageobjects/addToCart.js'
-
-//import FavoriteSelector from '../pageobjects/addToFavorites.js'
+import ItemSelector from '../pageobjects/addToCart.js'
+import FavoriteSelector from '../pageobjects/addToFavorites.js'
 
 describe('This is', () => {
     it('step one', async () => {
         await LoginPage.open()
 
-        //await LoginPage.login('maxwellhilmo@gmail.com' ,'19778264mH!')
-        //await expect(LoginPage.flashAlert).toBeExisting()
+        await LoginPage.login(LoginInfo.email ,LoginInfo.password)
+        await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
 
-/*describe('This is', () => {
+describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.selectPickupDelivery()
         await expect(DropdownSelector.flashAlert).toBeExisting()
@@ -35,8 +30,8 @@ describe('This is', () => {
         await CategoriesSelector.selectCategories()
         await expect(CategoriesSelector.flashAlert).toBeExisting()
     })
-})*/
-// step three needs to add a scroll funhction to load the links, so that I don't have to manually scroll. I also need to finish the tests for the links that take you to a different website.
+})
+
 describe('This is', () => {
     it('step three', async () => {
         await LinkSelector.selectAboutUs()
@@ -60,7 +55,7 @@ describe('This is', () => {
             expect.stringContaining('Save on, saver'))
     })
 }) 
-/*
+
 describe('This is', () => {
     it('step four', async () => {
         await ItemSelector.search('erasable pens')
@@ -122,4 +117,4 @@ describe('This is', () => {
         await FavoriteSelector.selectRemove('hello kitty headset')
         await expect(FavoriteSelector.flashAlert3).toBeExisting()
     })
-}) */
+})

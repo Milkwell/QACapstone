@@ -38,7 +38,6 @@ class DropdownSelector {
     }
 
 
-
     get dropDownNewFeatured () {
         return $('a[aria-label="New & featured"]');
     }
@@ -127,8 +126,6 @@ class DropdownSelector {
 
         await this.homePage.click();
     }
-
-
 
 
     get dropDownDeals () {

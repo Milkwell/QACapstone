@@ -21,7 +21,69 @@ class PickupSelector {
 
 export default new PickupSelector();
 
-I need to add my credentials to a git ignore page. I will add 'maxwellhilmo@gmail.com' ,'19778264mH!' as strings to call for in the git ignore file.
+
+Hey, I am creating an automated test to sign into a web page. I am using javascript and webdriverio for my automated test. I wanted to know,
+how do I create create code in a gitignored file that can replace the parameters 'email' and 'password' without exposing sensitive information?
+Current files and code:
+
+login.js:
+import { $ } from '@wdio/globals'
+import Page from './page.js';//imports another file to open the web page
+
+
+class LoginPage extends Page {
+
+    get btnSignIn () {
+        return $('a[id="account-sign-in"]');
+    }
+
+    get accountSignIn () {
+        return $('button[data-test="accountNav-signIn"]');
+    }
+
+    get inputEmail () {
+        return $('#username');
+    }
+
+    get inputPassword () {
+        return $('#password');
+    }
+
+    get btnSubmit () {
+        return $('button[type="submit"]');
+    }
+
+    async login (email, password) {
+        await this.btnSignIn.click();//opens a side window for the login page button
+        await this.accountSignIn.click();//opens the login page
+        await this.inputEmail.setValue(email);//fills in the information for the email
+        await this.inputPassword.setValue(password);//fills in the information for the password
+        await this.btnSubmit.click();//clicks the submit button for login
+    }
+    get flashAlert () {
+        return $('a[aria-label="Home"]'); //verifies the login success
+    }
+}
+
+export default new LoginPage();
+
+test.js:
+import { expect } from '@wdio/globals'
+import LoginPage from '../pageobjects/login.js'
+import LoginInfo from '../loginCredentials/login.js'
+
+describe('This is', () => {
+    it('step one', async () => {
+        await LoginPage.open() //This opens the web page
+
+        await LoginPage.login('email', 'password') //This brings you to the login page and fills in the information for the login
+        //How do I create code in a javascript file to put fill in the information for the email and password without exposing sensitive information?
+        await expect(LoginPage.flashAlert).toBeExisting() //This verifies that the login was successful
+    })
+})
+
+loginCredentials.js:
+//curently empty
 
 
 VV how I might be able to scroll down VVV
@@ -47,8 +109,10 @@ get pickupSelect () {
         return $('button[aria-label="pickup - unselected - 1 of 3 - Ready within 2 hours"]');
     }
 
+
 // VVV add an if else statment where if pick up is already selected, then it will follow different orders, because it could break other wise
         //await this.pickupSelect.click();
+
 
 VVV Links notes VVV
         await this.linkTargetCircle.click();
@@ -70,6 +134,7 @@ VVV FavoriteSelector notes VVV
     await this.cartSelect.click();
     await this.favoriteList.click();
     }
+
 
 VVV Old Categories selector VVV 
 import { $ } from '@wdio/globals'
@@ -754,3 +819,4 @@ class CategoriesSelector {
 
         await this.homePage.click();
     }
+}
