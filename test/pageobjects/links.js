@@ -4,9 +4,6 @@ import { browser } from '@wdio/globals'
 
 class LinkSelector {
 
-    get homePage () {
-        return $('a[aria-label="Target home"]');
-    }
     get pageChecker1 () {
         return $('div[class="landing-page-hero--subheading h3"]');
     }
@@ -71,8 +68,6 @@ class LinkSelector {
     }
 
     async selectAboutUs () {
-        await this.homePage.click();
-
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
@@ -169,8 +164,6 @@ class LinkSelector {
         await this.linkTargetPlus.click();
         await expect(this.pageTargetPlus).toExist();
         await browser.url(`https://www.target.com/`);
-
-        await this.homePage.click();
     }
 
     get homeLink () {
@@ -298,7 +291,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Team Member Services'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
     }
 
 
@@ -327,7 +320,7 @@ class LinkSelector {
         });
         await this.linkFindStore.click();
         await expect(this.pageFindStore).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -336,7 +329,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Clinic'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -345,7 +338,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Pharmacy'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -354,7 +347,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Target Optical'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -363,7 +356,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Services'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
     }
 
 
@@ -377,7 +370,7 @@ class LinkSelector {
         return $('div[aria-label="Target Circle™ Card"]');
     }
     get pageTargetCard () {
-        return $('h2[class="sc-fe064f5c-0 WObnm"]');
+        return $('img[alt="circle card logo"]');
     }
     get linkTarget360 () {
         return $('div[aria-label="Target Circle 360™"]');
@@ -428,21 +421,21 @@ class LinkSelector {
         });
         await this.linkTargetCircle.click();
         await expect(this.pageTargetCircle).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkTargetCard.click();
         await expect(this.pageTargetCard).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkTarget360.click();
         await expect(this.pageTargetCircle).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -451,28 +444,28 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Target App'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkRegistry.click();
         await expect(this.pageRegistry).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkDelivery.click();
         await expect(this.pageDelivery).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.linkPickup.click();
         await expect(this.pagePickup).toExist();
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -481,7 +474,7 @@ class LinkSelector {
         await expect(this.pageDriveUp).toExist();
         await expect(this.pageDriveUp).toHaveText(
             expect.stringContaining('Fast, easy & always free'));
-        await this.homePage.click();
+            await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -490,7 +483,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Free 2-Day Shipping'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -499,7 +492,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Pickup & Delivery'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -508,7 +501,7 @@ class LinkSelector {
         await expect(this.pageChecker5).toExist();
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Services'));
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
     }
 }
 
