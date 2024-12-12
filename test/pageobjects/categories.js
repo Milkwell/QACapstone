@@ -145,7 +145,7 @@ class CategoriesSelector {
         await this.btnHolidayHosting.click();
         await expect(this.pageChecker).toExist();
         await expect(this.pageChecker).toHaveText(
-            expect.stringContaining('Holiday Hosting & Entertaining')); //Holiday Hosting & Entertainment?
+            expect.stringContaining('Holiday Hosting & Entertaining'));
 
         await this.btnCategories.click();
         await this.btnElectronics.click();

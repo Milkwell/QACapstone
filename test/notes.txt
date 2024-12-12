@@ -21,6 +21,8 @@ class PickupSelector {
 
 export default new PickupSelector();
 
+on line 148 of categories //Holiday Hosting & Entertainment?
+
 
 Hey, I am creating an automated test to sign into a web page. I am using javascript and webdriverio for my automated test. I wanted to know,
 how do I create create code in a gitignored file that can replace the parameters 'email' and 'password' without exposing sensitive information?
