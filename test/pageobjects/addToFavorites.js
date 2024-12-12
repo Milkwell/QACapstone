@@ -20,7 +20,7 @@ class FavoriteSelector {
         return $('div[data-test="@web/CartIcon"]');
     }
     get favoriteList () {
-        return $('a[class="sc-e851bd29-0 dmfVmE sc-71934497-2 fifuch"]');
+        return $('a[data-test="tabFavoritesItemCount1"]');
     }
     async selectFavorite (item, staller) {
     await this.homePage.click();
@@ -59,7 +59,7 @@ class FavoriteSelector {
         return $('button[aria-label="remove  from your favorites"]');
     }
     get emptyList () {
-        return $('h2[class="sc-fe064f5c-0 WObnm h-padding-b-tiny"]');
+        return $('a[data-test="tabFavoritesItemCount0"]');
     }
     async selectRemove (item) {
         await this.btnX.click();

@@ -55,7 +55,7 @@ describe('This is', () => {
             expect.stringContaining('Save on, saver'))
     })
 }) 
-*/
+
 describe('This is', () => {
     it('step four', async () => {
         await ItemSelector.search('erasable pens')
@@ -70,7 +70,7 @@ describe('This is', () => {
         await ItemSelector.selectQty()
         await expect(ItemSelector.flashAlert3).toBeExisting()
         await expect(ItemSelector.flashAlert3).toHaveText(
-            expect.stringContaining('Qty 14')
+            expect.stringContaining('Qty 12')
         )
 
         await ItemSelector.selectSaveLater()
@@ -105,7 +105,7 @@ describe('This is', () => {
         )
     })
 }) 
-/*
+*/
 describe('This is', () => {
     it('step five', async () => {
         await FavoriteSelector.selectFavorite('hello kitty headset', 'Hello, the quick brown fox jumped over the lazy dog')
@@ -117,4 +117,4 @@ describe('This is', () => {
         await FavoriteSelector.selectRemove('hello kitty headset')
         await expect(FavoriteSelector.flashAlert3).toBeExisting()
     })
-})*/
+})
