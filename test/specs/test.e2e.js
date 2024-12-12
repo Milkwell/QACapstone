@@ -15,7 +15,7 @@ describe('This is', () => {
         await expect(LoginPage.flashAlert).toBeExisting()
     })
 })
-/*
+
 describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.selectPickupDelivery()
@@ -105,7 +105,7 @@ describe('This is', () => {
         )
     })
 }) 
-*/
+
 describe('This is', () => {
     it('step five', async () => {
         await FavoriteSelector.selectFavorite('hello kitty headset', 'Hello, the quick brown fox jumped over the lazy dog')
