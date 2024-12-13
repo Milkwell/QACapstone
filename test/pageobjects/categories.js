@@ -19,7 +19,6 @@ class CategoriesSelector {
         return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
     }
 
-
     get btnChristmas () {
         return $('a[data-url="/c/christmas/-/N-5xt30"]');
     }

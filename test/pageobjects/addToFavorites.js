@@ -25,17 +25,6 @@ class FavoriteSelector {
     get checkFavorites () {
         return $('a[href="/p/razer-kraken-kitty-v2-usb-gaming-headset-with-kitty-ears-and-chroma-rgb-lighting---hello-kitty-edition/-/A-92711201"]');
     }
-    async selectFavorite (item, staller) {
-    await this.homePage.click();
-    await this.searchBarInput.setValue(item);
-    await browser.keys([Key.Enter]);
-    await this.favoriteSelect.click();
-    await expect(this.favoriteHeadset).toExist(); 
-    await this.searchBarInput.setValue(staller);
-    await this.cartSelect.click();
-    await this.favoriteList.click();
-    await expect(this.checkFavorites).toExist();
-    }
 
     get btnAddToCart () {
         return $('button[aria-label="Add Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition to Cart"]');
@@ -45,11 +34,6 @@ class FavoriteSelector {
     }
     get checkCart () {
         return $('div[aria-label="cart item ready to fulfill"]');
-    }
-    async selectAddToCart () {
-        await this.btnAddToCart.click();
-        await this.btnConfirm.click();
-        await expect(this.checkCart).toExist();
     }
 
     get btnX () {
@@ -64,6 +48,25 @@ class FavoriteSelector {
     get checkShop () {
         return $('button[aria-label="favorite Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition to keep tabs on it"]');
     }
+
+    async selectFavorite (item, staller) {
+    await this.homePage.click();
+    await this.searchBarInput.setValue(item);
+    await browser.keys([Key.Enter]);
+    await this.favoriteSelect.click();
+    await expect(this.favoriteHeadset).toExist(); 
+    await this.searchBarInput.setValue(staller);
+    await this.cartSelect.click();
+    await this.favoriteList.click();
+    await expect(this.checkFavorites).toExist();
+    }
+
+    async selectAddToCart () {
+        await this.btnAddToCart.click();
+        await this.btnConfirm.click();
+        await expect(this.checkCart).toExist();
+    }
+
     async selectRemove (item) {
         await this.btnX.click();
         await this.favoriteList.click();

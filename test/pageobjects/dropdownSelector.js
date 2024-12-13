@@ -25,19 +25,6 @@ class DropdownSelector {
     get checkerShopDelivery () {
         return $('h1[class="sc-fe064f5c-0 ezQRcX h-margin-t-tiny"]');
     }
-    async selectPickupDelivery () {
-        await this.dropDownPickupDelivery.click();
-        await this.btnShopPickup.click();
-        await expect(this.checkerShopPickup).toExist();
-
-        await this.dropDownPickupDelivery.click();
-        await this.btnShopDelivery.click();
-        await expect(this.checkerShopDelivery).toExist();
-
-        await this.homePage.click();
-        await expect(this.homePageChecker).toExist();
-    }
-
 
     get dropDownNewFeatured () {
         return $('a[aria-label="New & featured"]');
@@ -84,6 +71,42 @@ class DropdownSelector {
     get btnLGBShop () {
         return $('a[data-tracking="LGBTQIA+ Shop"]');
     }
+
+    get dropDownDeals () {
+        return $('a[aria-label="Deals"]');
+    }
+    get btnTopDeals () {
+        return $('a[data-tracking="top-deals"]');
+    }
+    get btnCircleDeals () {
+        return $('a[data-tracking="target-circle-deals"]');
+    }
+    get checkerCircleDeals () {
+        return $('svg[aria-label="Target Circle trademark logo"]');
+    }
+    get btnWeekly () {
+        return $('a[data-tracking="weekly-ad"]');
+    }
+    get checkerWeekly () {
+        return $('h2[class="styles__StyledHeading-sc-1awz1yh-0 styles__HeaderStyled-sc-3o9rm8-2 dIGeaK cUOOdk"]');
+    }
+    get btnClearance () {
+        return $('a[data-tracking="clearance"]');
+    }
+
+    async selectPickupDelivery () {
+        await this.dropDownPickupDelivery.click();
+        await this.btnShopPickup.click();
+        await expect(this.checkerShopPickup).toExist();
+
+        await this.dropDownPickupDelivery.click();
+        await this.btnShopDelivery.click();
+        await expect(this.checkerShopDelivery).toExist();
+
+        await this.homePage.click();
+        await expect(this.homePageChecker).toExist();
+    }
+
     async selectNewFeatured () {
         await this.dropDownNewFeatured.click();
         await this.btnTargetArrivals.click();
@@ -129,28 +152,6 @@ class DropdownSelector {
         await expect(this.homePageChecker).toExist();
     }
 
-
-    get dropDownDeals () {
-        return $('a[aria-label="Deals"]');
-    }
-    get btnTopDeals () {
-        return $('a[data-tracking="top-deals"]');
-    }
-    get btnCircleDeals () {
-        return $('a[data-tracking="target-circle-deals"]');
-    }
-    get checkerCircleDeals () {
-        return $('svg[aria-label="Target Circle trademark logo"]');
-    }
-    get btnWeekly () {
-        return $('a[data-tracking="weekly-ad"]');
-    }
-    get checkerWeekly () {
-        return $('h2[class="styles__StyledHeading-sc-1awz1yh-0 styles__HeaderStyled-sc-3o9rm8-2 dIGeaK cUOOdk"]');
-    }
-    get btnClearance () {
-        return $('a[data-tracking="clearance"]');
-    }
     async selectDeals () {
         await this.dropDownDeals.click();
         await this.btnTopDeals.click();
