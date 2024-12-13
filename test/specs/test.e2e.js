@@ -70,7 +70,7 @@ describe('This is', () => {
         await ItemSelector.selectQty()
         await expect(ItemSelector.flashAlert3).toBeExisting()
         await expect(ItemSelector.flashAlert3).toHaveText(
-            expect.stringContaining('Qty 12')
+            expect.stringContaining('Qty 11')
         )
 
         await ItemSelector.selectSaveLater()

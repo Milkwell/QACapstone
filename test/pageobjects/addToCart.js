@@ -42,7 +42,7 @@ class ItemSelector {
         return $('select[data-test="cartItem-qty"]');
     }
     get qtyNumber () {
-        return $('option[value="12"]');
+        return $('option[value="11"]');
     }
     async selectQty () {
         await this.btnQty.click();
