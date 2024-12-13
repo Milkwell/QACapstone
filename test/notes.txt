@@ -21,6 +21,38 @@ class PickupSelector {
 
 export default new PickupSelector();
 
+
+
+
+
+
+
+Okay, okay. What I need to do. I need to 
+
+No logic in spec files, move it to Multiple functions in page objects and or loop it also
+
+Organize your selectors and functions into set areas of the file example AddToCart line 12
+
+Categories.js line 114 make a loop for the click, toExist, tohaveText
+
+Links.js
+Line 70 function make logic into a loop and the other functions etc
+Dynamic selectors example lines 42 and 45
+Maybe make this into multiple files for each item and their selectors example: SelectStores, aboutUS etc.
+Match Imports like the other classes with extending base and not using browser?
+
+I need an example of a loop, dynamic selectors, and functions
+
+DYNAMIC SELECTOR:
+async options(number){
+return $(`option[value="${number}"]`)
+}
+
+
+
+
+
+
 on line 148 of categories //Holiday Hosting & Entertainment?
 
 

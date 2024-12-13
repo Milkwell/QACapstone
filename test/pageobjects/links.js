@@ -1,4 +1,8 @@
-class LinkSelector extends Website {
+import { $ } from '@wdio/globals'
+import {expect} from '@wdio/globals'
+import { browser } from '@wdio/globals'
+
+class LinkSelector {
 
     get pageChecker1 () {
         return $('div[class="landing-page-hero--subheading h3"]');
@@ -6,7 +10,7 @@ class LinkSelector extends Website {
     get pageChecker2 () {
         return $('h1[class="hero--title"]');
     }
-    get flashAlert () {
+    get homePageChecker () {
         return $('div[class="storycard--text"]');
     }
 
@@ -160,6 +164,8 @@ class LinkSelector extends Website {
         await this.linkTargetPlus.click();
         await expect(this.pageTargetPlus).toExist();
         await browser.url(`https://www.target.com/`);
+        
+        await expect(this.homePageChecker).toExist();
     }
 
     get homeLink () {
@@ -288,6 +294,8 @@ class LinkSelector extends Website {
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Team Member Services'));
         await browser.url(`https://www.target.com/`);
+
+        await expect(this.homePageChecker).toExist();
     }
 
 
@@ -353,6 +361,8 @@ class LinkSelector extends Website {
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Services'));
         await browser.url(`https://www.target.com/`);
+
+        await expect(this.homePageChecker).toExist();
     }
 
 
@@ -498,6 +508,8 @@ class LinkSelector extends Website {
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Services'));
         await browser.url(`https://www.target.com/`);
+
+        await expect(this.homePageChecker).toExist();
     }
 }
 

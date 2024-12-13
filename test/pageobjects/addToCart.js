@@ -1,4 +1,8 @@
-class ItemSelector extends Website {
+import { $ } from '@wdio/globals'
+import { Key } from 'webdriverio'
+import {expect} from '@wdio/globals'
+
+class ItemSelector {
 
     get homePage () {
         return $('a[aria-label="Target home"]');
@@ -6,15 +10,17 @@ class ItemSelector extends Website {
     get searchBarInput () {
         return $('input[id="search"]');
     }
+    get shopChecker () {
+        return $('span[class="h-text-bs h-display-flex h-flex-align-center h-text-grayDark h-margin-l-x2"]');
+    }
     async search (item) {
         await this.homePage.click();
         await this.searchBarInput.setValue(item);
         await browser.keys([Key.Enter]);
+        await expect(this.shopChecker).toExist();
+        await expect(this.shopChecker).toHaveText(
+            expect.stringContaining('for “erasable pens”'));
     }
-    get flashAlert1 () {
-        return $('span[class="h-text-bs h-display-flex h-flex-align-center h-text-grayDark h-margin-l-x2"]');
-    }
-
 
     get penSelect () {
         return $('button[aria-label="Add Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack to cart"]');
@@ -25,15 +31,15 @@ class ItemSelector extends Website {
     get cartSelect () {
         return $('a[href="/cart"]');
     }
+    get cartChecker () {
+        return $('div[aria-label="cart item ready to fulfill"]');
+    }
     async selectPen () {
         await this.penSelect.click();
         await this.addToCart1.click();
         await this.cartSelect.click();
+        await expect(this.cartChecker).toExist();
     }
-    get flashAlert2 () {
-        return $('div[aria-label="cart item ready to fulfill"]');
-    }
-
 
     get btnQty () {
         return $('select[data-test="cartItem-qty"]');
@@ -41,25 +47,27 @@ class ItemSelector extends Website {
     get qtyNumber () {
         return $('option[value="11"]');
     }
+    get qtyChecker () {
+        return $('select[data-test="cartItem-qty"]');
+    }
     async selectQty () {
         await this.btnQty.click();
         await this.qtyNumber.click();
+        await expect(this.qtyChecker).toExist();
+        await expect(this.qtyChecker).toHaveText(
+            expect.stringContaining('Qty 11'));
     }
-    get flashAlert3 () {
-        return $('select[data-test="cartItem-qty"]');
-    }
-
 
     get btnSaveLater () {
         return $('button[aria-label="Save for later Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack"]');
     }
-    async selectSaveLater () {
-        await this.btnSaveLater.click();
-    }
-    get flashAlert4 () {
+    get saveLaterChecker () {
         return $('div[data-test="tab-tabContent-tab-Savedforlateritemcount1"]');
     }
-
+    async selectSaveLater () {
+        await this.btnSaveLater.click();
+        await expect(this.saveLaterChecker).toExist();
+    }
 
     get addBack () {
         return $('button[aria-label="Add Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack to Cart"]');
@@ -76,28 +84,30 @@ class ItemSelector extends Website {
     get btnSave () {
         return $('button[class="sc-ddc722c0-0 sc-f1230b39-0 flfJAZ jtKdbk"]');
     }
+    get substituteChecker () {
+        return $('p[class="sc-de0434cf-2 gWhKOC h-text-overflow-ellipsis"]');
+    }
     async selectSubstitute () {
         await this.addBack.click();
         await this.addToCart2.click();
         await this.btnSubstitute.click();
         await this.substituteSelect.click();
         await this.btnSave.click();
+        await expect(this.substituteChecker).toExist();
+        await expect(this.substituteChecker).toHaveText(
+            expect.stringContaining('8ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks'));
     }
-    get flashAlert5 () {
-        return $('p[class="sc-de0434cf-2 gWhKOC h-text-overflow-ellipsis"]');
-    }
-
 
     get selectDelivery () {
         return $('input[value="Same Day Delivery"]');
     }
-    async selectSameDayDelivery () {
-        await this.selectDelivery.click();
-    }
-    get flashAlert6 () {
+    get deliveryChecker () {
         return $('h2[data-test="modal-drawer-heading"]');
     }
-
+    async selectSameDayDelivery () {
+        await this.selectDelivery.click();
+        await expect(this.deliveryChecker).toExist();
+    }
 
     get btnGoBack () {
         return $('button[data-test="go-back-button"]');
@@ -108,25 +118,33 @@ class ItemSelector extends Website {
     get newQtyNumber () {
         return $('option[value="24"]');
     }
+    get shippingChecker () {
+        return $('h2[data-test="grouped-cart-fulfillment-heading"]');
+    }
     async selectShipping () {
         await this.btnGoBack.click();
         await this.btnShipping.click();
+        await expect(this.shippingChecker).toExist();
+        await expect(this.shippingChecker).toHaveText(
+            expect.stringContaining('Shipping'));
         await this.btnQty.click();
         await this.newQtyNumber.click();
+        await expect(this.qtyChecker).toExist();
+        await expect(this.qtyChecker).toHaveText(
+            expect.stringContaining('Qty 24'));
     }
-    get flashAlert7 () {
-        return $('h2[data-test="grouped-cart-fulfillment-heading"]');
-    }
-
 
     get btnX () {
         return $('button[aria-label="Remove Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack from Cart"]');
     }
+    get emptyCartChecker () {
+        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
+    }
     async selectBtnX () {
         await this.btnX.click();
-    }
-    get flashAlert8 () {
-        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
+        await expect(this.emptyCartChecker).toExist();
+        await expect(this.emptyCartChecker).toHaveText(
+            expect.stringContaining('Your cart is empty'));
     }
 }
 

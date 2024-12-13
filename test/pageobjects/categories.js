@@ -1,13 +1,16 @@
-class CategoriesSelector extends Website {
+import { $ } from '@wdio/globals'
+import {expect} from '@wdio/globals'
+
+class CategoriesSelector {
 
     get pageChecker () {
         return $('h1[class="sc-fe064f5c-0 fJliSz"]');
     }
-    get flashAlert () {
-        return $('div[class="storycard--text"]');
-    }
     get homePage () {
         return $('a[aria-label="Target home"]');
+    }
+    get homePageChecker () {
+        return $('div[class="storycard--text"]');
     }
     get btnCategories () {
         return $('a[aria-label="Categories"]');
@@ -319,6 +322,7 @@ class CategoriesSelector extends Website {
             expect.stringContaining('Clearance'));
 
         await this.homePage.click();
+        await expect(this.homePageChecker).toExist();
     }
 }
 
