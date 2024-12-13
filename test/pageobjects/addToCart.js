@@ -1,7 +1,4 @@
-import { $ } from '@wdio/globals'
-import { Key } from 'webdriverio'
-
-class ItemSelector {
+class ItemSelector extends Website {
 
     get homePage () {
         return $('a[aria-label="Target home"]');

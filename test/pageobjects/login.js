@@ -1,27 +1,27 @@
 import { $ } from '@wdio/globals'
-import Page from './page.js';
+import Website from './website.js';
+import {expect} from '@wdio/globals'
 
 
-class LoginPage extends Page {
+class LoginPage extends Website {
 
     get btnSignIn () {
         return $('a[id="account-sign-in"]');
     }
-
     get accountSignIn () {
         return $('button[data-test="accountNav-signIn"]');
     }
-
     get inputEmail () {
         return $('#username');
     }
-
     get inputPassword () {
         return $('#password');
     }
-
     get btnSubmit () {
         return $('button[type="submit"]');
+    }
+    get loginSuccess () {
+        return $('a[aria-label="Target home"]');
     }
 
     async login (email, password) {
@@ -30,9 +30,7 @@ class LoginPage extends Page {
         await this.inputEmail.setValue(email);
         await this.inputPassword.setValue(password);
         await this.btnSubmit.click();
-    }
-    get flashAlert () {
-        return $('a[aria-label="Target home"]');
+        await expect(this.loginSuccess).toExist();
     }
 }
 

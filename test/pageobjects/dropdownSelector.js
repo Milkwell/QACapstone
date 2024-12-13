@@ -6,7 +6,7 @@ class DropdownSelector {
     get homePage () {
         return $('a[aria-label="Target home"]');
     }
-    get flashAlert () {
+    get homePageChecker () {
         return $('div[class="storycard--text"]');
     }
 
@@ -35,6 +35,7 @@ class DropdownSelector {
         await expect(this.checkerShopDelivery).toExist();
 
         await this.homePage.click();
+        await expect(this.homePageChecker).toExist();
     }
 
 
@@ -125,6 +126,7 @@ class DropdownSelector {
             expect.stringContaining('LGBTQIA+ Shop'));
 
         await this.homePage.click();
+        await expect(this.homePageChecker).toExist();
     }
 
 
@@ -171,6 +173,7 @@ class DropdownSelector {
             expect.stringContaining('Clearance'));
 
         await this.homePage.click();
+        await expect(this.homePageChecker).toExist();
     }
 }
 

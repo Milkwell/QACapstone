@@ -1,7 +1,4 @@
-import { $ } from '@wdio/globals'
-import {expect} from '@wdio/globals'
-
-class CategoriesSelector {
+class CategoriesSelector extends Website {
 
     get pageChecker () {
         return $('h1[class="sc-fe064f5c-0 fJliSz"]');

@@ -1,8 +1,4 @@
-import { $ } from '@wdio/globals'
-import {expect} from '@wdio/globals'
-import { browser } from '@wdio/globals'
-
-class LinkSelector {
+class LinkSelector extends Website {
 
     get pageChecker1 () {
         return $('div[class="landing-page-hero--subheading h3"]');
