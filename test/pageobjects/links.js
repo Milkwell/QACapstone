@@ -39,9 +39,13 @@ class LinkSelector {
     get linkSustainGovern () {
         return $('div[aria-label="Sustainability & Governance"]');
     }
-    get linkPressCenter () {
+    get linkPressCenter () { //Dynamic selectors example lines 42 and 45
         return $('div[aria-label="Press Center"]');
     }
+    /* DYNAMIC SELECTOR:
+async options(number){
+return $(`option[value="${number}"]`)
+} */
     get linkAdvertise () {
         return $('div[aria-label="Advertise with Us"]');
     }
@@ -67,7 +71,7 @@ class LinkSelector {
         return $('a[aria-label="target plus home"]');
     }
 
-    async selectAboutUs () {
+    async selectAboutUs () { //Line 70 function make logic into a loop and the other functions etc
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });

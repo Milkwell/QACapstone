@@ -19,6 +19,7 @@ class CategoriesSelector {
     get btnAllCategorie () {
         return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
     }
+    /* myArray = ["christmas", "hunukkah", "Gift ideas" ] */
 
     get btnChristmas () {
         return $('a[data-url="/c/christmas/-/N-5xt30"]');
@@ -116,10 +117,10 @@ class CategoriesSelector {
 
         await this.btnCategories.click();
         await this.btnChristmas.click();
-        await this.btnAllCategorie.click();
+        await this.btnAllCategorie.click(); //make this a loop for multiple selectors VVV
         await expect(this.pageChecker).toExist();
         await expect(this.pageChecker).toHaveText(
-            expect.stringContaining('Christmas'));
+            expect.stringContaining('Christmas'));//loop the click, toExist, tohaveText ^^^
 
         await this.btnCategories.click();
         await this.btnHanukka.click();

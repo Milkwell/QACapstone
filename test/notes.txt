@@ -29,9 +29,9 @@ export default new PickupSelector();
 
 Okay, okay. What I need to do. I need to 
 
-No logic in spec files, move it to Multiple functions in page objects and or loop it also
+No logic in spec files, move it to Multiple functions in page objects and or loop it also - done
 
-Organize your selectors and functions into set areas of the file example AddToCart line 12
+Organize your selectors and functions into set areas of the file example AddToCart line 12 - almost done, just need to do it for links.js
 
 Categories.js line 114 make a loop for the click, toExist, tohaveText
 
@@ -48,7 +48,7 @@ async options(number){
 return $(`option[value="${number}"]`)
 }
 
-
+myArray = ["christmas", "hunukkah", "Gift ideas" ]
 
 
 
