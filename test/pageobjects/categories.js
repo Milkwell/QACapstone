@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals'
 import {expect} from '@wdio/globals'
+import { browser } from '@wdio/globals'
 
 class CategoriesSelector {
 
@@ -10,7 +11,7 @@ class CategoriesSelector {
         return $('a[aria-label="Target home"]');
     }
     get homePageChecker () {
-        return $('div[class="storycard--text"]');
+        return $('div[data-component-type="Superhero"]');
     }
     get btnCategories () {
         return $('a[aria-label="Categories"]');
@@ -111,7 +112,7 @@ class CategoriesSelector {
     }
     
     async selectCategories () {
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
 
         await this.btnCategories.click();
         await this.btnChristmas.click();

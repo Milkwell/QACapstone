@@ -414,9 +414,9 @@ class LinkSelector {
     get linkShipDelivery () {
         return $('div[aria-label="Shipping & Delivery"]');
     }
-    get pageShipDelivery () {
-        return $();
-    }
+   // get pageShipDelivery () {
+   //     return $(`h1[style="font-size: 28px;"]`);
+  //  }
     get linkMoreServices () {
         return $('div[aria-label="More Services"]');
     }

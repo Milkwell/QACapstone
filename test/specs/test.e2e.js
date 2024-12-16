@@ -47,8 +47,8 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step five', async () => {
-        await FavoriteSelector.selectFavorite('hello kitty headset', 'Hello, the quick brown fox jumped over the lazy dog')
+        await FavoriteSelector.selectFavorite('pens ballpoint', 'Hello, the quick brown fox jumped over the lazy dog')
         await FavoriteSelector.selectAddToCart()
-        await FavoriteSelector.selectRemove('hello kitty headset')
+        await FavoriteSelector.selectRemove('pens ballpoint')
     })
 })

@@ -11,10 +11,10 @@ class FavoriteSelector {
         return $('input[id="search"]');
     }
     get favoriteSelect () {
-    return $('button[aria-label="favorite Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition to keep tabs on it"]');
+    return $('button[aria-label="favorite BIC 10pk Xtra Life Ballpoint Pens Medium Tip Black ink: School Supplies, Stationery, 1.0mm Point, Office Essentials to keep tabs on it"]');
     }
-    get favoriteHeadset () {
-        return $('button[aria-label="remove Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition from your favorites"]');
+    get favoritePen () {
+        return $('button[aria-label="remove BIC 10pk Xtra Life Ballpoint Pens Medium Tip Black ink: School Supplies, Stationery, 1.0mm Point, Office Essentials from your favorites"]');
     }
     get cartSelect () {
         return $('div[data-test="@web/CartIcon"]');
@@ -23,21 +23,21 @@ class FavoriteSelector {
         return $('a[data-test="tabFavoritesItemCount1"]');
     }
     get checkFavorites () {
-        return $('a[href="/p/razer-kraken-kitty-v2-usb-gaming-headset-with-kitty-ears-and-chroma-rgb-lighting---hello-kitty-edition/-/A-92711201"]');
+        return $('a[href="/p/bic-10pk-xtra-life-ballpoint-pens-medium-tip-black-ink--school-supplies--stationery--1-0mm-point--office-essentials/-/A-16951588"]');
     }
 
     get btnAddToCart () {
-        return $('button[aria-label="Add Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition to Cart"]');
+        return $('button[aria-label="Add BIC 10pk Xtra Life Ballpoint Pens Medium Tip Black ink: School Supplies, Stationery, 1.0mm Point, Office Essentials to Cart"]');
     }
     get btnConfirm () {
-        return $('button[aria-label="Add to cart for Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition"]');
+        return $('button[aria-label="Add to cart for BIC 10pk Xtra Life Ballpoint Pens Medium Tip Black ink: School Supplies, Stationery, 1.0mm Point, Office Essentials"]');
     }
     get checkCart () {
         return $('div[aria-label="cart item ready to fulfill"]');
     }
 
     get btnX () {
-        return $('button[aria-label="Remove Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition from Cart"]');
+        return $('button[aria-label="Remove BIC 10pk Xtra Life Ballpoint Pens Medium Tip Black ink: School Supplies, Stationery, 1.0mm Point, Office Essentials from Cart"]');
     }
     get removeFavorite () {
         return $('button[aria-label="remove  from your favorites"]');
@@ -46,7 +46,7 @@ class FavoriteSelector {
         return $('a[data-test="tabFavoritesItemCount0"]');
     }
     get checkShop () {
-        return $('button[aria-label="favorite Razer Kraken Kitty V2 USB Gaming Headset with Kitty Ears and Chroma RGB Lighting - Hello Kitty Edition to keep tabs on it"]');
+        return $('button[aria-label="favorite BIC 10pk Xtra Life Ballpoint Pens Medium Tip Black ink: School Supplies, Stationery, 1.0mm Point, Office Essentials to keep tabs on it"]');
     }
 
     async selectFavorite (item, staller) {
@@ -54,7 +54,7 @@ class FavoriteSelector {
     await this.searchBarInput.setValue(item);
     await browser.keys([Key.Enter]);
     await this.favoriteSelect.click();
-    await expect(this.favoriteHeadset).toExist(); 
+    await expect(this.favoritePen).toExist(); 
     await this.searchBarInput.setValue(staller);
     await this.cartSelect.click();
     await this.favoriteList.click();

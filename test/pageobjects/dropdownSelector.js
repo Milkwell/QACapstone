@@ -88,7 +88,7 @@ class DropdownSelector {
         return $('a[data-tracking="weekly-ad"]');
     }
     get checkerWeekly () {
-        return $('h2[class="styles__StyledHeading-sc-1awz1yh-0 styles__HeaderStyled-sc-3o9rm8-2 dIGeaK cUOOdk"]');
+        return $('h2[class="sc-fe064f5c-0 sc-187e5a58-2 fJliSz iOAmGa"]');
     }
     get btnClearance () {
         return $('a[data-tracking="clearance"]');
