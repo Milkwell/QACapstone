@@ -50,6 +50,50 @@ return $(`option[value="${number}"]`)
 
 myArray = ["christmas", "hunukkah", "Gift ideas" ]
 
+Dynamic selector chatgpt example:
+
+Scenario: Locate a button with a partially dynamic id attribute
+Imagine a button on the webpage has an id like this:
+
+<button id="submit_12345">Submit</button>
+
+The number (12345) at the end of the id changes dynamically on every page load. To handle this in WebDriverIO, you can use a dynamic selector.
+
+
+WebDriverIO Code Example
+
+describe('Dynamic Selector Example', () => {
+    it('should click a button with a dynamic ID', async () => {
+        // Open the target page
+        await browser.url('https://example.com');
+
+        // Use a dynamic selector with a regex match or partial attribute match
+        const dynamicButton = await $(`button[id^="submit_"]`);
+
+        // Interact with the button
+        await dynamicButton.click();
+
+        // Add assertion to ensure the button action works
+        const successMessage = await $('div.success-message');
+        await expect(successMessage).toBeDisplayed();
+    });
+});
+
+Explanation of the Dynamic Selector
+Selector: button[id^="submit_"]
+^="submit_": This matches any id attribute that starts with "submit_".
+Other Useful Operators:
+$="text": Matches attributes ending with "text".
+*="text": Matches attributes containing "text".
+This technique helps you handle elements where part of the selector is predictable (e.g., "submit_"), but another part is dynamic.
+
+
+Another Example: Dynamic XPath Selector
+If you prefer to use XPath for dynamic attributes:
+
+const dynamicButton = await $(`//button[starts-with(@id, 'submit_')]`);
+
+The starts-with() XPath function performs the same operation as the ^= attribute selector.
 
 
 
