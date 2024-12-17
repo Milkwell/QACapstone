@@ -24,15 +24,6 @@ describe('This is', () => {
 
 describe('This is', () => {
     it('step three', async () => {
-        await LinkSelector.selectAboutUs()
-        await LinkSelector.selectHelp()
-        await LinkSelector.selectStores()
-        await LinkSelector.selectServices()
-    })
-}) 
-
-describe('This is', () => {
-    it('step four', async () => {
         await ItemSelector.search('erasable pens')
         await ItemSelector.selectPen()
         await ItemSelector.selectQty()
@@ -46,9 +37,18 @@ describe('This is', () => {
 }) 
 
 describe('This is', () => {
-    it('step five', async () => {
+    it('step four', async () => {
         await FavoriteSelector.selectFavorite('pens ballpoint', 'Hello, the quick brown fox jumped over the lazy dog')
         await FavoriteSelector.selectAddToCart()
         await FavoriteSelector.selectRemove('pens ballpoint')
     })
 })
+
+describe('This is', () => {
+    it('step five', async () => {
+        await LinkSelector.selectAboutUs()
+        await LinkSelector.selectHelp()
+        await LinkSelector.selectStores()
+        await LinkSelector.selectServices()
+    })
+}) 
