@@ -1,12 +1,13 @@
 import { $ } from '@wdio/globals'
 import { Key } from 'webdriverio'
 import {expect} from '@wdio/globals'
+import { browser } from '@wdio/globals'
 
 class FavoriteSelector {
 
-    get homePage () {
-        return $('a[aria-label="Target home"]');
-    }
+    //get homePage () {
+    //    return $('a[aria-label="Target home"]');
+    //}
     get searchBarInput () {
         return $('input[id="search"]');
     }
@@ -50,7 +51,7 @@ class FavoriteSelector {
     }
 
     async selectFavorite (item, staller) {
-    await this.homePage.click();
+    await browser.url(`https://www.target.com/`);
     await this.searchBarInput.setValue(item);
     await browser.keys([Key.Enter]);
     await this.favoriteSelect.click();

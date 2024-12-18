@@ -1,12 +1,13 @@
 import { $ } from '@wdio/globals'
 import {expect} from '@wdio/globals'
+import { browser } from '@wdio/globals'
 
 //Match Imports like the other classes with extending base and not using browser? Like "extends Website" from login.js - do it for all tests.js
 class DropdownSelector {
 
-    get homePage () {
-        return $('a[aria-label="Target home"]');
-    }
+    //get homePage () {
+    //    return $('a[aria-label="Target home"]');
+   // }
     get homePageChecker () {
         return $('div[class="storycard--text"]');
     }
@@ -104,7 +105,7 @@ class DropdownSelector {
         await this.btnShopDelivery.click();
         await expect(this.checkerShopDelivery).toExist();
 
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
         await expect(this.homePageChecker).toExist();
     }
 
@@ -149,7 +150,7 @@ class DropdownSelector {
         await expect(this.checkerSpecialDeals).toHaveText(
             expect.stringContaining('LGBTQIA+ Shop'));
 
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
         await expect(this.homePageChecker).toExist();
     }
 
@@ -174,7 +175,7 @@ class DropdownSelector {
         await expect(this.checkerSpecialDeals).toHaveText(
             expect.stringContaining('Clearance'));
 
-        await this.homePage.click();
+        await browser.url(`https://www.target.com/`);
         await expect(this.homePageChecker).toExist();
     }
 }
