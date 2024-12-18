@@ -4,8 +4,15 @@ import { browser } from '@wdio/globals'
 
 class LinkSelector {
 
-    get pageChecker1 () {
-        return $('div[class="landing-page-hero--subheading h3"]');
+    bottomLinks (name) { 
+        return $(`div[aria-label="${name}"]`);
+    }
+    pageCheckerString (string) {
+        return $('');
+    }
+    
+    pageChecker1 (name) {
+        return $(`div[class="landing-page-hero--subheading h3"][contains(text(), "${name}")]`);
     }
     get pageChecker2 () {
         return $('h1[class="hero--title"]');
@@ -14,69 +21,50 @@ class LinkSelector {
         return $('div[class="storycard--text"]');
     }
 
-
-    get linkAboutTarget () {
-        return $('div[aria-label="About Target"]');
-    }
-    get linkCareers () {
-        return $('div[aria-label="Careers"]');
-    }
-    get linkNewsBlog () {
-        return $('div[aria-label="News & Blog"]');
-    }
-    get linkTargetBrands () {
-        return $('div[aria-label="Target Brands"]');
-    }
-    get linkBullseyeShop () {
-        return $('div[aria-label="Bullseye Shop"]');
-    }
     get windowBullseyeShop () {
         return $('h2[data-test="modal-drawer-heading"]');
     }
     get closeWindowBullseyeShop () {
-        return $('button[aria-label="close"]');
-    }
-    get linkSustainGovern () {
-        return $('div[aria-label="Sustainability & Governance"]');
-    }
-    get linkPressCenter () { //Dynamic selectors example lines 42 and 45
-        return $('div[aria-label="Press Center"]');
-    }
-    /* DYNAMIC SELECTOR:
-async options(number){
-return $(`option[value="${number}"]`)
-} */
-    get linkAdvertise () {
-        return $('div[aria-label="Advertise with Us"]');
-    }
+        return $('button[aria-label="close"]'); 
+    } // not needed
     get pageAdvertise () {
-        return $('img[class="custom-logo"]');
-    }
-    get linkInvestors () {
-        return $('div[aria-label="Investors"]');
-    }
-    get linkAffiliatePartner () {
-        return $('div[aria-label="Affiliates & Partners"]');
+        return $('img[class="custom-logo"]'); 
     }
     get pageAffiliatePartner () {
         return $('img[alt="Partner Logo"]');
     }
-    get linkSuppliers () {
-        return $('div[aria-label="Suppliers"]');
-    }
-    get linkTargetPlus () {
-        return $('div[aria-label="TargetPlus"]');
-    }
     get pageTargetPlus () {
-        return $('a[aria-label="target plus home"]');
+        return $('a[aria-label="target plus home"]'); 
     }
 
-    async selectAboutUs () { //Line 70 function make logic into a loop and the other functions etc
+    linkNamesAboutUs = ["About Target", "Careers", "News & Blog", "Target Brands", "Bullseye Shop", "Sustainability & Governance", "Press Center", "Advertise with Us", 
+    "Investors", "Affiliates & Partners", "Suppliers", "TargetPlus"];
+
+    /*pageCheckerAboutUs = {this.pageChecker1('About'), this.pageChecker1, this.pageChecker1, this.pageChecker2, this.windowBullseyeShop, this.pageChecker1, this.pageChecker1, this.pageAdvertise, 
+    this.pageChecker1, this.pageAffiliatePartner, this.pageChecker2, this.pageTargetPlus};*/
+/*
+    pageStringCheckerAboutUs = ["About", "Careers", "News & Features", "Target Brands", "Sustainability & Governance", "Press", "Investors", "Suppliers",] 
+*/
+    async loopLinks () {
+        for (let i = 0; i < this.linkNamesAboutUs.length; i++) {
+            await browser.execute(() => {
+                window.scrollTo(0, document.body.scrollHeight);
+            });
+            await this.bottomLinks(this.linkNamesAboutUs[i]).click();
+            //await expect(this.pageCheckerAboutUs[i]).toExist();
+
+            await browser.url(`https://www.target.com/`);
+            await expect(this.homePageChecker).toExist();
+        }
+    }
+
+    async selectAboutUs () {
+        //here
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkAboutTarget.click();
-        await expect(this.pageChecker1).toExist();
+        await this.bottomLinks('About Target').click();
+        await expect(this.pageChecker1).toExist(); // 1111111111
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('About'));
         await browser.url(`https://www.target.com/`);
@@ -84,8 +72,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkCareers.click();
-        await expect(this.pageChecker1).toExist();
+        await this.bottomLinks("Careers").click();
+        await expect(this.pageChecker1).toExist(); // 1111111111
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Careers'));
         await browser.url(`https://www.target.com/`);
@@ -93,8 +81,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkNewsBlog.click();
-        await expect(this.pageChecker1).toExist();
+        await this.bottomLinks('News & Blog').click();
+        await expect(this.pageChecker1).toExist(); // 1111111111
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('News & Features'));
         await browser.url(`https://www.target.com/`);
@@ -102,8 +90,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTargetBrands.click();
-        await expect(this.pageChecker2).toExist();
+        await this.bottomLinks('Target Brands').click();
+        await expect(this.pageChecker2).toExist(); // 2222222222222
         await expect(this.pageChecker2).toHaveText(
             expect.stringContaining('Target Brands'));
         await browser.url(`https://www.target.com/`);
@@ -111,12 +99,12 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkBullseyeShop.click();
-        await expect(this.windowBullseyeShop).toExist();
+        await this.bottomLinks('Bullseye Shop').click();
+        await expect(this.windowBullseyeShop).toExist(); // needs and "if" statement
         await this.closeWindowBullseyeShop.click();
 
-        await this.linkSustainGovern.click();
-        await expect(this.pageChecker1).toExist();
+        await this.bottomLinks('Sustainability & Governance').click();
+        await expect(this.pageChecker1).toExist(); // 1111111111
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Sustainability & Governance'));
         await browser.url(`https://www.target.com/`);
@@ -124,8 +112,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkPressCenter.click();
-        await expect(this.pageChecker1).toExist();
+        await this.bottomLinks('Press Center').click();
+        await expect(this.pageChecker1).toExist(); // 1111111111
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Press'));
         await browser.url(`https://www.target.com/`);
@@ -133,15 +121,15 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkAdvertise.click();
-        await expect(this.pageAdvertise).toExist();
+        await this.bottomLinks('Advertise with Us').click();
+        await expect(this.pageAdvertise).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkInvestors.click();
-        await expect(this.pageChecker1).toExist();
+        await this.bottomLinks('Investors').click();
+        await expect(this.pageChecker1).toExist(); // 1111111111
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Investors'));
         await browser.url(`https://www.target.com/`);
@@ -149,15 +137,15 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkAffiliatePartner.click();
-        await expect(this.pageAffiliatePartner).toExist();
+        await this.bottomLinks('Affiliates & Partners').click();
+        await expect(this.pageAffiliatePartner).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkSuppliers.click();
-        await expect(this.pageChecker2).toExist();
+        await this.bottomLinks('Suppliers').click();
+        await expect(this.pageChecker2).toExist(); // 2222222222222
         await expect(this.pageChecker2).toHaveText(
             expect.stringContaining('Suppliers'));
         await browser.url(`https://www.target.com/`);
@@ -165,16 +153,13 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTargetPlus.click();
-        await expect(this.pageTargetPlus).toExist();
+        await this.bottomLinks('TargetPlus').click();
+        await expect(this.pageTargetPlus).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
         
         await expect(this.homePageChecker).toExist();
     }
 
-    get homeLink () {
-        return $('a[href="https://www.target.com"]');
-    }
     get pageChecker3 () {
         return $('h1[class="sc-fe064f5c-0 WObnm"]');
     }
@@ -185,59 +170,36 @@ return $(`option[value="${number}"]`)
         return $('h1[class="sc-fe064f5c-0 fJliSz"]');
     }
 
-    get linkTargetHelp () {
-        return $('div[aria-label="Target Help"]');
-    }
     get pageTargetHelp () {
         return $('h2[class="custom-h2"]');
-    }
-    get linkReturns () {
-        return $('div[aria-label="Returns"]');
-    }
-    get linkTrackOrders () {
-        return $('div[aria-label="Track Orders"]');
-    }
-    get linkRecalls () {
-        return $('div[aria-label="Recalls"]');
-    }
-    get linkContactUs () {
-        return $('div[aria-label="Contact Us"]');
     }
     get pageContactUs () {
         return $('button[aria-labelledby="choose topic"]');
     }
-    get linkFeedback () {
-        return $('div[aria-label="Feedback"]');
-    }
     get pageFeedback () {
         return $('div[id="kampyleFormModal"]');
     } 
-    get linkAccessibility () {
-        return $('div[aria-label="Accessibility"]');
-    }
-    get linkSecurity () {
-        return $('div[aria-label="Security & Fraud"]');
-    }
     get pageSecurity () {
         return $('b[class="navbar__title text--truncate"]');
     }
-    get linkTeamServices () {
-        return $('div[aria-label="Team Member Services"]');
-    }
+/*
+    linkNamesHelp = ["Target Help", "Returns", "Track Orders", "Recalls", "Contact Us", "Feedback", "Accessibility", "Security & Fraud", "Team Member Services"]
 
+    pageStringCheckerHelp = ["Target Return Policy", "Order history", "Product recalls", "Accessibility", "Team Member Services"]
+*/
     async selectHelp () {
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTargetHelp.click();
-        await expect(this.pageTargetHelp).toExist();
+        await this.bottomLinks('Target Help').click();
+        await expect(this.pageTargetHelp).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkReturns.click();
-        await expect(this.pageChecker3).toExist();
+        await this.bottomLinks('Returns').click();
+        await expect(this.pageChecker3).toExist(); // 333333333
         await expect(this.pageChecker3).toHaveText(
             expect.stringContaining('Target Return Policy'));
         await browser.url(`https://www.target.com/`);
@@ -245,8 +207,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTrackOrders.click();
-        await expect(this.pageChecker3).toExist();
+        await this.bottomLinks('Track Orders').click();
+        await expect(this.pageChecker3).toExist(); // 333333333
         await expect(this.pageChecker3).toHaveText(
             expect.stringContaining('Order history'));
         await browser.url(`https://www.target.com/`);
@@ -254,8 +216,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkRecalls.click();
-        await expect(this.pageChecker4).toExist();
+        await this.bottomLinks('Recalls').click();
+        await expect(this.pageChecker4).toExist(); // 44444444444
         await expect(this.pageChecker4).toHaveText(
             expect.stringContaining('Product recalls'));
         await browser.url(`https://www.target.com/`);
@@ -263,22 +225,22 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkContactUs.click();
-        await expect(this.pageContactUs).toExist();
+        await this.bottomLinks('Contact Us').click();
+        await expect(this.pageContactUs).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkFeedback.click();
-        await expect(this.pageFeedback).toExist();
+        await this.bottomLinks('Feedback').click();
+        await expect(this.pageFeedback).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`); 
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkAccessibility.click();
-        await expect(this.pageChecker4).toExist();
+        await this.bottomLinks('Accessibility').click();
+        await expect(this.pageChecker4).toExist(); // 444444444444
         await expect(this.pageChecker4).toHaveText(
             expect.stringContaining('Accessibility'));
         await browser.url(`https://www.target.com/`);
@@ -286,15 +248,15 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkSecurity.click();
-        await expect(this.pageSecurity).toExist();
+        await this.bottomLinks('Security & Fraud').click();
+        await expect(this.pageSecurity).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTeamServices.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Team Member Services').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Team Member Services'));
         await browser.url(`https://www.target.com/`);
@@ -303,38 +265,27 @@ return $(`option[value="${number}"]`)
     }
 
 
-    get linkFindStore () {
-        return $('div[aria-label="Find a Store"]');
-    }
     get pageFindStore () {
         return $('div[class="styles_container__JeY3m"]');
     }
-    get linkClinic () {
-        return $('div[aria-label="Clinic"]');
-    }
-    get linkPharmacy () {
-        return $('div[aria-label="Pharmacy"]');
-    }
-    get linkOptical () {
-        return $('div[aria-label="Optical"]');
-    }
-    get linkStoreServices () {
-        return $('div[aria-label="More In-Store Services"]');
-    }
+/*
+    linkNamesStores = ["Find a Store", "Clinic", "Pharmacy", "Optical", "More In-Store Services"]
 
+    pageStringCheckerStores = ["Clinic", "Pharmacy", "Target Optical", "Services"]
+*/
     async selectStores () {
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkFindStore.click();
-        await expect(this.pageFindStore).toExist();
+        await this.bottomLinks('Find a Store').click();
+        await expect(this.pageFindStore).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkClinic.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Clinic').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Clinic'));
         await browser.url(`https://www.target.com/`);
@@ -342,8 +293,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkPharmacy.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Pharmacy').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Pharmacy'));
         await browser.url(`https://www.target.com/`);
@@ -351,8 +302,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkOptical.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Optical').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Target Optical'));
         await browser.url(`https://www.target.com/`);
@@ -360,8 +311,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkStoreServices.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('More In-Store Services').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Services'));
         await browser.url(`https://www.target.com/`);
@@ -370,88 +321,57 @@ return $(`option[value="${number}"]`)
     }
 
 
-    get linkTargetCircle () {
-        return $('div[aria-label="Target Circle™"]');
-    }
     get pageTargetCircle () {
         return $('svg[aria-label="Target Circle 360 TM"]');
-    }
-    get linkTargetCard () {
-        return $('div[aria-label="Target Circle™ Card"]');
     }
     get pageTargetCard () {
         return $('img[alt="circle card logo"]');
     }
-    get linkTarget360 () {
-        return $('div[aria-label="Target Circle 360™"]');
-    }
-    get linkTargetApp () {
-        return $('div[aria-label="Target App"]');
-    }
-    get linkRegistry () {
-        return $('div[aria-label="Registry"]');
-    }
     get pageRegistry () {
         return $('h1[data-test="@site-registry/HomeBanner/heading"]');
-    }
-    get linkDelivery () {
-        return $('div[aria-label="Same Day Delivery"]');
     }
     get pageDelivery () {
         return $('h1[class="sc-fe064f5c-0 ezQRcX h-margin-t-tiny"]');
     }
-    get linkPickup () {
-        return $('div[aria-label="Order Pickup"]');
-    }
     get pagePickup () {
         return $('h1[class="sc-fe064f5c-0 ezQRcX h-display-inline-flex h-margin-t-tight"]');
-    }
-    get linkDriveUp () {
-        return $('div[aria-label="Drive Up"]');
     }
     get pageDriveUp () {
         return $('span[style="line-height:90%;display:block;"]');
     }
-    get linkShipping () {
-        return $('div[aria-label="Free 2-Day Shipping"]');
-    }
-    get linkShipDelivery () {
-        return $('div[aria-label="Shipping & Delivery"]');
-    }
-   // get pageShipDelivery () {
-   //     return $(`h1[style="font-size: 28px;"]`);
-  //  }
-    get linkMoreServices () {
-        return $('div[aria-label="More Services"]');
-    }
+/*
+    linkNamesServices = ["Target Circle™", "Target Circle™ Card", "Target Circle 360™", "Target App", "Registry", "Same Day Delivery", "Order Pickup", "Drive Up", 
+"Free 2-Day Shipping", "Shipping & Delivery", "More Services"]
 
+    pageStringCheckerServices = ["Target App", "Free 2-Day Shipping", "Pickup & Delivery", "Services"]
+*/
     async selectServices () {
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTargetCircle.click();
-        await expect(this.pageTargetCircle).toExist();
+        await this.bottomLinks('Target Circle™').click();
+        await expect(this.pageTargetCircle).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTargetCard.click();
-        await expect(this.pageTargetCard).toExist();
+        await this.bottomLinks('Target Circle™ Card').click();
+        await expect(this.pageTargetCard).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTarget360.click();
-        await expect(this.pageTargetCircle).toExist();
+        await this.bottomLinks('Target Circle 360™').click();
+        await expect(this.pageTargetCircle).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkTargetApp.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Target App').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Target App'));
         await browser.url(`https://www.target.com/`);
@@ -459,38 +379,36 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkRegistry.click();
-        await expect(this.pageRegistry).toExist();
+        await this.bottomLinks('Registry').click();
+        await expect(this.pageRegistry).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkDelivery.click();
-        await expect(this.pageDelivery).toExist();
+        await this.bottomLinks('Same Day Delivery').click();
+        await expect(this.pageDelivery).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkPickup.click();
-        await expect(this.pagePickup).toExist();
+        await this.bottomLinks('Order Pickup').click();
+        await expect(this.pagePickup).toExist(); //needs to be an "if" statement
         await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkDriveUp.click();
-        await expect(this.pageDriveUp).toExist();
-        await expect(this.pageDriveUp).toHaveText(
-            expect.stringContaining('Fast, easy & always free'));
+        await this.bottomLinks('Drive Up').click();
+        await expect(this.pageDriveUp).toExist(); //needs to be an "if" statement
             await browser.url(`https://www.target.com/`);
 
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkShipping.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Free 2-Day Shipping').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Free 2-Day Shipping'));
         await browser.url(`https://www.target.com/`);
@@ -498,8 +416,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkShipDelivery.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('Shipping & Delivery').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Pickup & Delivery'));
         await browser.url(`https://www.target.com/`);
@@ -507,8 +425,8 @@ return $(`option[value="${number}"]`)
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
         });
-        await this.linkMoreServices.click();
-        await expect(this.pageChecker5).toExist();
+        await this.bottomLinks('More Services').click();
+        await expect(this.pageChecker5).toExist(); // 555555555555555555
         await expect(this.pageChecker5).toHaveText(
             expect.stringContaining('Services'));
         await browser.url(`https://www.target.com/`);

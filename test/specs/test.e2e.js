@@ -12,7 +12,7 @@ describe('This is', () => {
         await LoginPage.login(LoginInfo.email ,LoginInfo.password)
     })
 })
-
+/*
 describe('This is', () => {
     it('step two', async () => {
         await DropdownSelector.selectPickupDelivery()
@@ -21,13 +21,14 @@ describe('This is', () => {
         await CategoriesSelector.selectCategories()
     })
 })
-
+*/
 describe('This is', () => {
     it('step three', async () => {
-        await LinkSelector.selectAboutUs()
-        await LinkSelector.selectHelp()
-        await LinkSelector.selectStores()
-        await LinkSelector.selectServices()
+        await LinkSelector.loopLinks();
+        //await LinkSelector.selectAboutUs()
+        //await LinkSelector.selectHelp()
+        //await LinkSelector.selectStores()
+       // await LinkSelector.selectServices()
     })
 }) 
 /*
