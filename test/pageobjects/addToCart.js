@@ -5,9 +5,6 @@ import { browser } from '@wdio/globals'
 
 class ItemSelector {
 
-    //get homePage () {
-    //    return $('a[aria-label="Target home"]');
-    //}
     get searchBarInput () {
         return $('input[id="search"]');
     }
@@ -18,9 +15,9 @@ class ItemSelector {
     get penSelect () {
         return $('button[aria-label="Add Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack to cart"]');
     }
-    /*get pickupSelect () {
+    get pickupSelect () {
         return $('button[aria-label="pickup - unselected - 1 of 3 - Ready within 2 hours"]');
-    }*/
+    }
     get addToCart1 () {
         return $('button[data-test="orderPickupButton"]');
     }
