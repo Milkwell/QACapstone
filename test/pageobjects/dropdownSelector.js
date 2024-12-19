@@ -1,13 +1,9 @@
-import { $ } from '@wdio/globals'
-import {expect} from '@wdio/globals'
-import { browser } from '@wdio/globals'
+import { $ } from '@wdio/globals';
+import {expect} from '@wdio/globals';
 
 //Match Imports like the other classes with extending base and not using browser? Like "extends Website" from login.js - do it for all tests.js
-class DropdownSelector {
+class DropdownSelector extends Website {
 
-    //get homePage () {
-    //    return $('a[aria-label="Target home"]');
-   // }
     get homePageChecker () {
         return $('div[class="storycard--text"]');
     }

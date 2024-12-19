@@ -160,6 +160,12 @@ describe('This is', () => {
     })
 })
 
+//await expect(this.shippingChecker).toHaveText(
+          //  expect.stringContaining('Shipping'));
+//get homePage () {
+//    return $('a[aria-label="Target home"]');
+//}
+
 loginCredentials.js:
 //curently empty
 

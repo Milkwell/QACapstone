@@ -1,6 +1,6 @@
-import { $ } from '@wdio/globals'
+import { $ } from '@wdio/globals';
 import Website from './website.js';
-import {expect} from '@wdio/globals'
+import {expect} from '@wdio/globals';
 
 
 class LoginPage extends Website {

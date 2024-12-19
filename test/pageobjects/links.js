@@ -1,8 +1,6 @@
-import { $ } from '@wdio/globals'
-import {expect} from '@wdio/globals'
-import { browser } from '@wdio/globals'
+import Website from './website';
 
-class LinkSelector {
+class LinkSelector extends Website {
 
     bottomLinks (name) { 
         return $(`div[aria-label="${name}"]`);
@@ -11,11 +9,11 @@ class LinkSelector {
         return $('');
     }
     
-    pageChecker1 (name) {
-        return $(`div[class="landing-page-hero--subheading h3"][contains(text(), "${name}")]`);
+    pageChecker1 (title) {
+        return $(`div[class="landing-page-hero--subheading h3"][contains(text(), "${title}")]`);
     }
-    get pageChecker2 () {
-        return $('h1[class="hero--title"]');
+    pageChecker2 (title) {
+        return $(`h1[class="hero--title"][contains(text(), "${title}")]`);
     }
     get homePageChecker () {
         return $('div[class="storycard--text"]');
@@ -24,9 +22,6 @@ class LinkSelector {
     get windowBullseyeShop () {
         return $('h2[data-test="modal-drawer-heading"]');
     }
-    get closeWindowBullseyeShop () {
-        return $('button[aria-label="close"]'); 
-    } // not needed
     get pageAdvertise () {
         return $('img[class="custom-logo"]'); 
     }
@@ -37,15 +32,16 @@ class LinkSelector {
         return $('a[aria-label="target plus home"]'); 
     }
 
-    linkNamesAboutUs = ["About Target", "Careers", "News & Blog", "Target Brands", "Bullseye Shop", "Sustainability & Governance", "Press Center", "Advertise with Us", 
-    "Investors", "Affiliates & Partners", "Suppliers", "TargetPlus"];
+    linkNamesAboutUs = ["About Target", "Careers"/*, "News & Blog", "Target Brands", "Bullseye Shop", "Sustainability & Governance", "Press Center", "Advertise with Us", 
+"Investors", "Affiliates & Partners", "Suppliers", "TargetPlus"*/];
 
-    /*pageCheckerAboutUs = {this.pageChecker1('About'), this.pageChecker1, this.pageChecker1, this.pageChecker2, this.windowBullseyeShop, this.pageChecker1, this.pageChecker1, this.pageAdvertise, 
-    this.pageChecker1, this.pageAffiliatePartner, this.pageChecker2, this.pageTargetPlus};*/
+    pageCheckerAboutUs = [this.pageChecker1('About'), this.pageChecker1('Careers'), this.pageChecker1('News & Features'), this.pageChecker2('Target Brands'), this.windowBullseyeShop, 
+    this.pageChecker1('Sustainability & Governance'), this.pageChecker1('Press'), this.pageAdvertise, this.pageChecker1('Investors'), this.pageAffiliatePartner, 
+    this.pageChecker2('Suppliers'), this.pageTargetPlus];
 /*
     pageStringCheckerAboutUs = ["About", "Careers", "News & Features", "Target Brands", "Sustainability & Governance", "Press", "Investors", "Suppliers",] 
 */
-    async loopLinks () {
+    async loopLinksAboutUs () {
         for (let i = 0; i < this.linkNamesAboutUs.length; i++) {
             await browser.execute(() => {
                 window.scrollTo(0, document.body.scrollHeight);
@@ -64,7 +60,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks('About Target').click();
-        await expect(this.pageChecker1).toExist(); // 1111111111
+        await expect(this.pageChecker1).toExist(); 
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('About'));
         await browser.url(`https://www.target.com/`);
@@ -73,7 +69,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks("Careers").click();
-        await expect(this.pageChecker1).toExist(); // 1111111111
+        await expect(this.pageChecker1).toExist(); 
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Careers'));
         await browser.url(`https://www.target.com/`);
@@ -82,7 +78,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks('News & Blog').click();
-        await expect(this.pageChecker1).toExist(); // 1111111111
+        await expect(this.pageChecker1).toExist(); 
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('News & Features'));
         await browser.url(`https://www.target.com/`);
@@ -91,7 +87,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks('Target Brands').click();
-        await expect(this.pageChecker2).toExist(); // 2222222222222
+        await expect(this.pageChecker2).toExist(); 
         await expect(this.pageChecker2).toHaveText(
             expect.stringContaining('Target Brands'));
         await browser.url(`https://www.target.com/`);
@@ -104,7 +100,7 @@ class LinkSelector {
         await this.closeWindowBullseyeShop.click();
 
         await this.bottomLinks('Sustainability & Governance').click();
-        await expect(this.pageChecker1).toExist(); // 1111111111
+        await expect(this.pageChecker1).toExist(); 
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Sustainability & Governance'));
         await browser.url(`https://www.target.com/`);
@@ -113,7 +109,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks('Press Center').click();
-        await expect(this.pageChecker1).toExist(); // 1111111111
+        await expect(this.pageChecker1).toExist(); 
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Press'));
         await browser.url(`https://www.target.com/`);
@@ -129,7 +125,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks('Investors').click();
-        await expect(this.pageChecker1).toExist(); // 1111111111
+        await expect(this.pageChecker1).toExist(); 
         await expect(this.pageChecker1).toHaveText(
             expect.stringContaining('Investors'));
         await browser.url(`https://www.target.com/`);
@@ -145,7 +141,7 @@ class LinkSelector {
             window.scrollTo(0, document.body.scrollHeight);
         });
         await this.bottomLinks('Suppliers').click();
-        await expect(this.pageChecker2).toExist(); // 2222222222222
+        await expect(this.pageChecker2).toExist(); 
         await expect(this.pageChecker2).toHaveText(
             expect.stringContaining('Suppliers'));
         await browser.url(`https://www.target.com/`);
@@ -160,14 +156,14 @@ class LinkSelector {
         await expect(this.homePageChecker).toExist();
     }
 
-    get pageChecker3 () {
-        return $('h1[class="sc-fe064f5c-0 WObnm"]');
+    pageChecker3 () {
+        return $(`h1[class="sc-fe064f5c-0 WObnm"][contains(text(), "${title}")]`);
     }
-    get pageChecker4 () {
-        return $('h1[style="font-size: 28px;"]');
+    pageChecker4 () {
+        return $(`h1[style="font-size: 28px;"][contains(text(), "${title}")]`);
     }
-    get pageChecker5 () {
-        return $('h1[class="sc-fe064f5c-0 fJliSz"]');
+    pageChecker5 () {
+        return $(`h1[class="sc-fe064f5c-0 fJliSz"][contains(text(), "${title}")]`);
     }
 
     get pageTargetHelp () {
@@ -183,10 +179,26 @@ class LinkSelector {
         return $('b[class="navbar__title text--truncate"]');
     }
 /*
-    linkNamesHelp = ["Target Help", "Returns", "Track Orders", "Recalls", "Contact Us", "Feedback", "Accessibility", "Security & Fraud", "Team Member Services"]
+    linkNamesHelp = ["Target Help", "Returns", "Track Orders", "Recalls", "Contact Us", "Feedback", "Accessibility", "Security & Fraud", "Team Member Services"];
+
+    pageCheckerHelp = [this.pageTargetHelp, this.pageChecker3('Target Return Policy'), this.pageChecker3('Order history'), this.pageChecker4('Product recalls'), this.pageContactUs, 
+    this.pageFeedback, this.pageChecker4('Accessibility'), this.pageSecurity, this.pageChecker5('Team Member Services')];
 
     pageStringCheckerHelp = ["Target Return Policy", "Order history", "Product recalls", "Accessibility", "Team Member Services"]
 */
+async loopLinksHelp () {
+    for (let i = 0; i < this.linkNamesAboutUs.length; i++) {
+        await browser.execute(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        await this.bottomLinks(this.linkNamesHelp[i]).click();
+        //await expect(this.pageCheckerAboutUs[i]).toExist();
+
+        await browser.url(`https://www.target.com/`);
+        await expect(this.homePageChecker).toExist();
+    }
+}
+
     async selectHelp () {
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -271,8 +283,23 @@ class LinkSelector {
 /*
     linkNamesStores = ["Find a Store", "Clinic", "Pharmacy", "Optical", "More In-Store Services"]
 
+    pageCheckerStores = [this.pageFindStore, this.pageChecker5, this.pageChecker5, this.pageChecker5, this.pageChecker5];
+
     pageStringCheckerStores = ["Clinic", "Pharmacy", "Target Optical", "Services"]
 */
+async loopLinksStores () {
+    for (let i = 0; i < this.linkNamesAboutUs.length; i++) {
+        await browser.execute(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        await this.bottomLinks(this.linkNamesStores[i]).click();
+        //await expect(this.pageCheckerAboutUs[i]).toExist();
+
+        await browser.url(`https://www.target.com/`);
+        await expect(this.homePageChecker).toExist();
+    }
+}
+
     async selectStores () {
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);
@@ -345,6 +372,19 @@ class LinkSelector {
 
     pageStringCheckerServices = ["Target App", "Free 2-Day Shipping", "Pickup & Delivery", "Services"]
 */
+async loopLinksServices () {
+    for (let i = 0; i < this.linkNamesAboutUs.length; i++) {
+        await browser.execute(() => {
+            window.scrollTo(0, document.body.scrollHeight);
+        });
+        await this.bottomLinks(this.linkNamesServices[i]).click();
+        //await expect(this.pageCheckerAboutUs[i]).toExist();
+
+        await browser.url(`https://www.target.com/`);
+        await expect(this.homePageChecker).toExist();
+    }
+}
+
     async selectServices () {
         await browser.execute(() => {
             window.scrollTo(0, document.body.scrollHeight);

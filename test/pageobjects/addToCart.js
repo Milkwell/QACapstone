@@ -1,9 +1,6 @@
-import { $ } from '@wdio/globals'
-import { Key } from 'webdriverio'
-import {expect} from '@wdio/globals'
-import { browser } from '@wdio/globals'
+import Website from './website';
 
-class ItemSelector {
+class ItemSelector extends Website {
 
     get searchBarInput () {
         return $('input[id="search"]');
@@ -102,7 +99,15 @@ class ItemSelector {
 
     async selectPen () {
         await this.penSelect.click();
-        //await this.pickupSelect.click();
+        /*
+        await this.pickupSelect.click();
+        (await?) if () {
+            
+        }
+        else {
+            
+        }
+        */
         await this.addToCart1.click();
         await this.cartSelect.click();
         await expect(this.cartChecker).toExist();

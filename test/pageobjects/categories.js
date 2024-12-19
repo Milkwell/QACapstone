@@ -1,8 +1,7 @@
-import { $ } from '@wdio/globals'
-import {expect} from '@wdio/globals'
-import { browser } from '@wdio/globals'
+import { $ } from '@wdio/globals';
+import {expect} from '@wdio/globals';
 
-class CategoriesSelector {
+class CategoriesSelector extends Website {
 
     get pageChecker () {
         return $('h1[class="sc-fe064f5c-0 fJliSz"]');
@@ -19,7 +18,12 @@ class CategoriesSelector {
     get btnAllCategorie () {
         return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
     }
-    /* myArray = ["christmas", "hunukkah", "Gift ideas" ] */
+    /* myArray = ["christmas", "hunukkah", "Gift ideas" ] 
+    
+    DYNAMIC SELECTOR:
+async options(number){
+return $(`option[value="${number}"]`)
+}*/
 
     get btnChristmas () {
         return $('a[data-url="/c/christmas/-/N-5xt30"]');

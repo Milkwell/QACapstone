@@ -1,13 +1,9 @@
-import { $ } from '@wdio/globals'
-import { Key } from 'webdriverio'
-import {expect} from '@wdio/globals'
-import { browser } from '@wdio/globals'
+import { $ } from '@wdio/globals';
+import { Key } from 'webdriverio';
+import {expect} from '@wdio/globals';
 
-class FavoriteSelector {
+class FavoriteSelector extends Website {
 
-    //get homePage () {
-    //    return $('a[aria-label="Target home"]');
-    //}
     get searchBarInput () {
         return $('input[id="search"]');
     }
