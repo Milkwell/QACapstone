@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals';
 import {expect} from '@wdio/globals';
+import Website from './website';
 
 //Match Imports like the other classes with extending base and not using browser? Like "extends Website" from login.js - do it for all tests.js
 class DropdownSelector extends Website {
@@ -91,6 +92,26 @@ class DropdownSelector extends Website {
     get btnClearance () {
         return $('a[data-tracking="clearance"]');
     }
+
+    /*
+    windowDropDown
+    (name) { 
+        return $(`a[aria-label="${name}"]`);
+    }
+
+    windowDropDownNames = ["pickup and delivery", "New & featured", "Deals"];
+
+
+    dropDownButton (name) { 
+        return $(`a[data-tracking="${name}"]`);
+    }
+
+    dropDownButtonNames = [
+    "Order Pickup", "Same Day Delivery", 
+    "Target New Arrivals ", "Target Finds ", "#TargetStyle", "Black Beyond Measure", "Más Que", "Women-Owned Brands at Target", "Asian-Owned Brands at Target ", "LGBTQIA+ Shop", 
+    "top-deals", "target-circle-deals", "weekly-ad", "clearance"
+    ];
+    */
 
     async selectPickupDelivery () {
         await this.dropDownPickupDelivery.click();

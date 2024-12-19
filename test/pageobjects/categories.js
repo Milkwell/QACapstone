@@ -1,5 +1,6 @@
 import { $ } from '@wdio/globals';
 import {expect} from '@wdio/globals';
+import Website from './website';
 
 class CategoriesSelector extends Website {
 
@@ -18,11 +19,28 @@ class CategoriesSelector extends Website {
     get btnAllCategorie () {
         return $('a[class="sc-ddc722c0-0 sc-f1230b39-0 drTrmk jtKdbk h-display-flex"]');
     }
-    /* myArray = ["christmas", "hunukkah", "Gift ideas" ] 
-    
-    DYNAMIC SELECTOR:
-async options(number){
-return $(`option[value="${number}"]`)
+    /*
+
+categorySelector
+
+categoryNames = [];
+
+categoryChecker = [];
+
+   async loopCategories () {
+        for (let i = 0; i < this.categoryNames.length; i++) {
+            await browser.execute(() => {
+                
+            await this.btnCategories.click();
+            await this.bottomLinks(this.categoryNames[i]).click();
+            await this.btnAllCategorie.click();
+            await expect(this.categoryChecker[i]).toExist();
+
+            await browser.url(`https://www.target.com/`);
+            await expect(this.homePageChecker).toExist();
+        }
+    }
+
 }*/
 
     get btnChristmas () {
