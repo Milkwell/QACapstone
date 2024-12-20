@@ -1,10 +1,12 @@
 import LoginPage from '../pageobjects/login.js';
 import LoginInfo from '../pageobjects/loginCredentials.js';
-import DropdownSelector from '../pageobjects/dropdownSelector.js';
-import CategoriesSelector from '../pageobjects/categories.js';
+//import DropdownSelector from '../pageobjects/dropdownSelector.js';
+//import CategoriesSelector from '../pageobjects/categories.js';
 import LinkSelector from '../pageobjects/links.js';
-import ItemSelector from '../pageobjects/addToCart.js';
-import FavoriteSelector from '../pageobjects/addToFavorites.js';
+//import ItemSelector from '../pageobjects/addToCart.js';
+//import FavoriteSelector from '../pageobjects/addToFavorites.js';
+
+//I wounder if I could fix the test by renameing "test.e2e.js" to a different name. But I would need to know how to run the test without using "npm run wdio".
 
 describe('This is', () => {
     it('step one', async () => {
@@ -15,20 +17,19 @@ describe('This is', () => {
 /*
 describe('This is', () => {
     it('step two', async () => {
-       /* await DropdownSelector.selectPickupDelivery();
+        await DropdownSelector.selectPickupDelivery();
         await DropdownSelector.selectNewFeatured();
         await DropdownSelector.selectDeals();
         await CategoriesSelector.selectCategories();
     })
 })
-
+*/
 describe('This is', () => {
     it('step three', async () => {
-        //await LinkSelector.loopLinks();
-        //await LinkSelector.selectAboutUs();
-        //await LinkSelector.selectHelp();
-        //await LinkSelector.selectStores();
-       // await LinkSelector.selectServices();
+        //await LinkSelector.loopLinksAboutUs();
+        //await LinkSelector.loopLinksHelp();
+        await LinkSelector.loopLinksStores();
+        //await LinkSelector.loopLinksServices();
     })
 }) 
 /*

@@ -1,8 +1,7 @@
 import { $ } from '@wdio/globals';
 import {expect} from '@wdio/globals';
-import Website from './website';
 
-class CategoriesSelector extends Website {
+class CategoriesSelector {
 
     get pageChecker () {
         return $('h1[class="sc-fe064f5c-0 fJliSz"]');
@@ -25,7 +24,7 @@ categorySelector
 
 categoryNames = [];
 
-categoryChecker = [];
+categoryPageChecker = [];
 
    async loopCategories () {
         for (let i = 0; i < this.categoryNames.length; i++) {

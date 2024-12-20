@@ -1,9 +1,9 @@
 import { $ } from '@wdio/globals';
 import { Key } from 'webdriverio';
 import {expect} from '@wdio/globals';
-import Website from './website';
+import { browser } from '@wdio/globals';
 
-class FavoriteSelector extends Website {
+class FavoriteSelector {
 
     get searchBarInput () {
         return $('input[id="search"]');

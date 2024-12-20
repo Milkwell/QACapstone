@@ -2,7 +2,6 @@ import { $ } from '@wdio/globals';
 import {expect} from '@wdio/globals';
 import Website from './website';
 
-//Match Imports like the other classes with extending base and not using browser? Like "extends Website" from login.js - do it for all tests.js
 class DropdownSelector extends Website {
 
     get homePageChecker () {

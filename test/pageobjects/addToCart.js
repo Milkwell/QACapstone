@@ -1,9 +1,9 @@
 import { $ } from '@wdio/globals';
 import { Key } from 'webdriverio';
 import {expect} from '@wdio/globals';
-import Website from './website';
+import { browser } from '@wdio/globals';
 
-class ItemSelector extends Website {
+class ItemSelector {
 
     get searchBarInput () {
         return $('input[id="search"]');
@@ -13,7 +13,7 @@ class ItemSelector extends Website {
     }
 
     get penSelect () {
-        return $('button[aria-label="Add Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack to cart"]');
+        return $('button[aria-label="Add Pilot 5pk FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Multicolored Ink to cart"]');
     }
     get pickupSelect () {
         return $('button[aria-label="pickup - unselected - 1 of 3 - Ready within 2 hours"]');
@@ -39,20 +39,20 @@ class ItemSelector extends Website {
     }
 
     get btnSaveLater () {
-        return $('button[aria-label="Save for later Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack"]');
+        return $('button[aria-label="Save for later Pilot 5pk FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Multicolored Ink"]');
     }
     get saveLaterChecker () {
         return $('div[data-test="tab-tabContent-tab-Savedforlateritemcount1"]');
     }
 
     get addBack () {
-        return $('button[aria-label="Add Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack to Cart"]');
+        return $('button[aria-label="Add Pilot 5pk FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Multicolored Ink to Cart"]');
     }
     get addToCart2 () {
-        return $('button[aria-label="Add to cart for Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack"]');
+        return $('button[aria-label="Add to cart for Pilot 5pk FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Multicolored Ink"]');
     }
     get btnSubstitute () {
-        return $(`button[aria-label="Add note or backup for Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack"]`);
+        return $(`button[aria-label="Add note or backup for Pilot 5pk FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Multicolored Ink"]`);
     }
     get substituteSelect () {
         return $('input[id="backup-item-78025475"]');
@@ -85,7 +85,7 @@ class ItemSelector extends Website {
     }
 
     get btnX () {
-        return $('button[aria-label="Remove Pilot 5ct FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Assorted Inks: Colored Pens with Eraser, Retractable, 5-Pack from Cart"]');
+        return $('button[aria-label="Remove Pilot 5pk FriXion Clicker Erasable Gel Pens Fine Point 0.7mm Multicolored Ink from Cart"]');
     }
     get emptyCartChecker () {
         return $('h1[class="sc-fe064f5c-0 fJliSz"]');
